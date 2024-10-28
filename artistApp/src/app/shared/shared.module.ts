@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardComponent } from './card/card.component';
 import { CommentComponent } from './comment/comment.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
-  declarations: [CardComponent, CommentComponent],
+  declarations: [CommentComponent, PostComponent],
   imports: [CommonModule],
-  exports: [CardComponent, CommentComponent],
+  exports: [CommentComponent, PostComponent],
 })
 export class SharedModule {}
