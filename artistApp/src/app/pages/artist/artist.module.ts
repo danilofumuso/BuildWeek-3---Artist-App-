@@ -3,15 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { ArtistRoutingModule } from './artist-routing.module';
 import { ArtistComponent } from './artist.component';
-
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
-  declarations: [
-    ArtistComponent
-  ],
-  imports: [
-    CommonModule,
-    ArtistRoutingModule
-  ]
+  declarations: [ArtistComponent],
+  imports: [CommonModule, ArtistRoutingModule, SharedModule],
 })
-export class ArtistModule { }
+export class ArtistModule {}
