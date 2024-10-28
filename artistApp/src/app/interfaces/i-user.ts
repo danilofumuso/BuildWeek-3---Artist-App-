@@ -3,6 +3,8 @@ export interface iUser {
   name: string;
   surname: string;
   userName: string;
+  profilePic?: string;
+  bio?: string;
   email: string;
   password: string;
 }

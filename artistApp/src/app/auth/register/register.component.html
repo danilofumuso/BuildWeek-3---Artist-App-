@@ -4,38 +4,60 @@
     <input
       type="text"
       class="form-control mb-3"
-      placeholder="Nome"
+      placeholder="Nome*"
       name="nome"
+      required
       [(ngModel)]="formData.name"
     />
     <input
       type="text"
       class="form-control mb-3"
-      placeholder="Cognome"
+      placeholder="Cognome*"
       name="cognome"
+      required
       [(ngModel)]="formData.surname"
     />
     <input
       type="text"
       class="form-control mb-3"
-      placeholder="User Name"
+      placeholder="User Name*"
       name="userName"
+      required
       [(ngModel)]="formData.userName"
+    />
+    <input
+      type="text"
+      class="form-control mb-3"
+      placeholder="Profile picture (https://...)"
+      name="profilePic"
+      [(ngModel)]="formData.profilePic"
+    />
+    <input
+      type="text"
+      class="form-control mb-3"
+      placeholder="User bio"
+      name="bio"
+      [(ngModel)]="formData.bio"
     />
     <input
       type="email"
       class="form-control mb-3"
-      placeholder="Email"
+      placeholder="Email*"
       name="email"
+      required
       [(ngModel)]="formData.email"
     />
     <input
       type="password"
       class="form-control mb-3"
-      placeholder="Password"
+      placeholder="Password*"
       name="password"
+      required
       [(ngModel)]="formData.password"
     />
+    <p class="text-danger fw-semibold">
+      I campi contrassegnati con * sono obbligatori
+    </p>
     <button (click)="register()" class="btn btn-success">Registrati</button>
   </form>
 </div>
