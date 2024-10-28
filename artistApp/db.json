@@ -1,5 +1,14 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "riccardo@email.it",
+      "password": "$2a$10$nJ/j5B.xp8IIfVd6xVuJIe3ef3KcpKFJBEbBrFr7kH2gpNkRuBIPS",
+      "name": "Riccardo",
+      "surname": "Santilli",
+      "userName": "Santillis",
+      "id": 2
+    }
+  ],
   "posts": [],
   "comments": [],
   "favorites": []

@@ -16,21 +16,18 @@ export class TokenInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    return this.authSvc.authSubject$.pipe(
-      switchMap((accessData) => {
-        if (!accessData) {
-          return next.handle(request);
-        }
+    const accessData = this.authSvc.authSubject$.getValue();
+    if (!accessData) {
+      return next.handle(request);
+    }
 
-        const newRequest = request.clone({
-          headers: request.headers.append(
-            'Authorization',
-            `Bearer ${accessData.accessToken}`
-          ),
-        });
+    const newRequest = request.clone({
+      headers: request.headers.append(
+        'Authorization',
+        `Bearer ${accessData.accessToken}`
+      ),
+    });
 
-        return next.handle(newRequest);
-      })
-    );
+    return next.handle(newRequest);
   }
 }
