@@ -4,4 +4,5 @@ export const environment = {
   postsUrl: 'http://localhost:3000/posts',
   commentsUrl: 'http://localhost:3000/comments',
   favoritesUrl: 'http://localhost:3000/favorites',
+  usersUrl: 'http://localhost:3000/users',
 };

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from '../../environments/environment.development';
-import { BehaviorSubject, map, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { iAccessData } from '../interfaces/i-access-data';
 import { Router } from '@angular/router';
 import { iUser } from '../interfaces/i-user';
@@ -74,5 +74,9 @@ export class AuthService {
       return;
     }
     this.authSubject$.next(accessData);
+  }
+
+  getAllUsers(): Observable<iUser[]> {
+    return this.http.get<iUser[]>(environment.usersUrl);
   }
 }

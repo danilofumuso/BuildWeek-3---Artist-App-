@@ -31,15 +31,15 @@ export class HeaderComponent {
   }
 
   //prendo l'id dall'utente loggato e lo uso per filtrare l'array di user che uso per la "friendlist"
-  // clickToGetFriends() {
-  //   this.authSvc.user$.pipe(map((user) => user?.id)).subscribe((userId) => {
-  //     this.authSvc
-  //       .getAllUsers()
-  //       .subscribe(
-  //         (users) => (this.users = users.filter((user) => user.id !== userId))
-  //       );
-  //   });
-  // }
+  clickToGetFriends() {
+    this.authSvc.user$.pipe(map((user) => user?.id)).subscribe((userId) => {
+      this.authSvc
+        .getAllUsers()
+        .subscribe(
+          (users) => (this.users = users.filter((user) => user.id !== userId))
+        );
+    });
+  }
 
   logout(): void {
     this.authSvc.logout();
