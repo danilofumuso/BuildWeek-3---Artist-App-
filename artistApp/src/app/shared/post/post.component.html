@@ -11,7 +11,7 @@
   <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
     <div class="card-body p-0 mt-2 ms-2">
       <p>{{ post.user.userName }} &#8226; {{ post.caption }}</p>
-      <p></p>
+      <p>{{ post.date | date }}</p>
       <button class="btn btn-outline-info w-50" (click)="showComments(post.id)">
         Comments
       </button>

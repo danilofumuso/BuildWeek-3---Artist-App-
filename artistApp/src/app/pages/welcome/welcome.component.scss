@@ -1,7 +1,6 @@
 .hero {
   height: 50vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)),
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 }
 
 .hero h1 {
@@ -15,10 +14,10 @@
 }
 
 .carousel-container {
-width: 100vw;
+  width: 100vw;
   max-width: 100%;
   margin: 0;
-  position: relative
+  position: relative;
 }
 
 .small-card-img {
@@ -31,14 +30,13 @@ width: 100vw;
   width: 500px;
   transition: transform 0.2s ease;
   z-index: 0;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .card:hover {
   transform: scale(1.2);
   z-index: 10;
 }
-
 
 .carousel-item {
   display: flex;
@@ -48,11 +46,16 @@ width: 100vw;
 
 .lead {
   font-weight: 600;
- }
+}
 
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
-  background-color: rgba(0, 0, 0, 0.9); // Colore più scuro al passaggio del mouse
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.9
+  ); // Colore più scuro al passaggio del mouse
 }
 
 .carousel-control-prev-icon,
