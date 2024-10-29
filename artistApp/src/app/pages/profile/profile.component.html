@@ -99,11 +99,11 @@
         <h3>I miei post</h3>
         <div class="row">
           <div
-            class="col-12 col-md-6 col-lg-3 mb-5"
+            class="col-12 col-md-6 col-lg-3 mb-5 position-relative"
             *ngFor="let post of userPosts"
           >
             <app-post [post]="post"></app-post>
-            <div class="card-footer">
+            <div class="card-footer position-absolute top-0">
               <button
                 class="btn btn-primary btn-sm me-2 rounded-circle"
                 (click)="toggleCreatePost(post)"
