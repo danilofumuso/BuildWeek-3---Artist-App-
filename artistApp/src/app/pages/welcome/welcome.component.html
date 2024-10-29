@@ -1,40 +1,29 @@
 <div
   class="hero text-center text-white d-flex align-items-center justify-content-center"
 >
-  <div>
+  <div class="container">
     <h1 class="display-3">Benvenuto su CreativeSpace!</h1>
     <p class="lead">Esplora e condividi la tua creatività.</p>
-    <button class="btn btn-outline-light btn-lg me-2">Accedi</button>
-    <button class="btn btn-outline-light btn-lg">Registrati</button>
+    <a routerLink="/auth/login" class="btn btn-outline-light btn-lg me-2"
+      >Accedi</a
+    >
+    <a routerLink="/auth/register" class="btn btn-outline-light btn-lg"
+      >Registrati</a
+    >
   </div>
 </div>
-
-<div class="carousel-container text-center mt-5">
-  <h2 class="display-6 mb-4">Scopri alcuni dei nostri post</h2>
-  <div id="carouselPosts" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div
-        *ngFor="let post of posts"
-        [ngClass]="{ 'carousel-item': true, active: i === 0 }"
-      >
-        <app-post [post]="post"></app-post>
+<div>
+  <ngb-carousel *ngFor="let post of posts">
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="{{ post.imageUrl }}" alt="Random first slide" />
       </div>
-    </div>
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#carouselPosts"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    </button>
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#carouselPosts"
-      data-bs-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    </button>
-  </div>
+      <div class="carousel-caption">
+        <h3>
+          {{ post.title }} <small>{{ post.user }}</small>
+        </h3>
+        <p>{{ post.caption }}</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
 </div>
