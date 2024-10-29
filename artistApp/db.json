@@ -114,7 +114,7 @@
       "id": 2,
       "comment": "Fuck *** lurid ass",
       "post": {
-        "id": 1,
+        "id": 3,
         "title": "My first post",
         "user": {
           "email": "danilo@email.it",
@@ -130,7 +130,7 @@
       "id": 3,
       "comment": "No way!!!!!!! ahahahahaahahahahaahahhahaah ahahahahahahahahahahahahahahah",
       "post": {
-        "id": 1,
+        "id": 2,
         "title": "My first post",
         "user": {
           "email": "riccardo@email.it",

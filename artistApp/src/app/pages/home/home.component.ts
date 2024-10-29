@@ -44,14 +44,14 @@ export class HomeComponent {
   getComments() {
     this.posts.forEach((post) => {
       this.commentsSvc.getCommentsById(post.id).subscribe((comments) => {
-        comments.forEach((comment) => {
-          this.comments.push(comment);
-        });
+        this.comments = comments;
       });
     });
   }
 
-  showComments() {
-    this.visible = !this.visible;
+  showComments(postId: number) {
+    if (postId) {
+      this.visible = !this.visible;
+    }
   }
 }

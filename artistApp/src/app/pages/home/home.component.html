@@ -5,12 +5,15 @@
     <div class="col-4" *ngFor="let post of posts">
       <app-post [post]="post">
         <!-- <button (click)="like()">Like</button> -->
-        <button class="btn btn-outline-info w-50" (click)="showComments()">
+        <button class="btn btn-outline-info w-50" (click)="showComments(post)">
           Comments
         </button>
       </app-post>
       <div class="bg-white rounded-2" *ngFor="let comment of comments">
-        <app-comment *ngIf="visible" [comment]="comment"></app-comment>
+        <app-comment
+          *ngIf="visible && comment.post.id === post.id"
+          [comment]="comment"
+        ></app-comment>
       </div>
       <!-- il commento deve essere legato all'id del post, ogni post creato avrà i suoi commenti correlati -->
     </div>
