@@ -10,18 +10,25 @@ import { CommentsService } from '../../services/comments.service';
 })
 export class PostComponent {
   @Input() post!: iPost;
-  @Input() comments: iComment[] = [];
-
-  visible: boolean = true;
-
+  comments: iComment[] = [];
+  isVisible: boolean = true;
+  callBlocking: boolean = false;
   isCollapsed: boolean = true;
 
   constructor(private commentsSvc: CommentsService) {}
 
-  showComments(postId: number) {
+  getComments(postId: number) {
+    if (this.callBlocking) {
+      return;
+    }
+
     this.commentsSvc.getCommentsOfPost(postId).subscribe((comments) => {
       this.comments = comments;
-      this.visible = !this.visible;
+      this.callBlocking = !this.callBlocking;
     });
+  }
+
+  showComments() {
+    this.isVisible = !this.isVisible;
   }
 }
