@@ -1,18 +1,1 @@
-<div class="card border-0 align-items-center mb-4 p-0" *ngIf="favorite">
-  <img
-    class="img-fluid"
-    [src]="favorite.movie.imageUrl"
-    [alt]="favorite.movie.title"
-    (click)="isCollapsed = !isCollapsed"
-  />
-  <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
-    <div class="card-body p-0 mt-2 text-center">
-      <h5 class="card-title">
-        {{ favorite.movie.title }} &#8226; {{ favorite.movie.year }}
-      </h5>
-      <p>{{ favorite.movie.description }}</p>
-      <h6>Director: {{ favorite.movie.director }}</h6>
-    </div>
-  </div>
-  <ng-content></ng-content>
-</div>
+
