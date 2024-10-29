@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { iUser } from './i-user';
 
 export interface iPost {
@@ -6,4 +7,5 @@ export interface iPost {
   imageUrl: string;
   user: iUser;
   caption: string;
+  date: string;
 }
