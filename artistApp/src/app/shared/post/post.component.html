@@ -12,7 +12,14 @@
     <div class="card-body p-0 mt-2 ms-2">
       <p>{{ post.user.userName }} &#8226; {{ post.caption }}</p>
       <p></p>
-      <ng-content></ng-content>
+      <button class="btn btn-outline-info w-50" (click)="showComments(post.id)">
+        Comments
+      </button>
     </div>
+  </div>
+</div>
+<div #collapse="ngbCollapse" [(ngbCollapse)]="visible">
+  <div class="bg-white rounded-2" *ngFor="let comment of comments">
+    <app-comment [comment]="comment"></app-comment>
   </div>
 </div>
