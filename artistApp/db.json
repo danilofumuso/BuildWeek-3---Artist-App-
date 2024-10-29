@@ -7,6 +7,26 @@
       "surname": "Santilli",
       "userName": "Santillis",
       "id": 2
+    },
+    {
+      "email": "lui@gi.it",
+      "password": "$2a$10$FPlWrX.3ZnNPGIqKmnrBuuxFLeGnL7blC7zMmlqL17rUP91C.o/5W",
+      "name": "luigi",
+      "surname": "carannante",
+      "userName": "luisss",
+      "profilePic": "",
+      "bio": "epicode student",
+      "id": 3
+    },
+    {
+      "email": "jkhjkh@lkjh",
+      "password": "$2a$10$2enX9NTR40GafOyZkHG3jeTDnaVFwshyrUHYCdpOZ1do9.T90mntq",
+      "name": "aaaaa",
+      "surname": "bbbbb",
+      "userName": "aabb",
+      "profilePic": "",
+      "bio": "",
+      "id": 4
     }
   ],
   "posts": [

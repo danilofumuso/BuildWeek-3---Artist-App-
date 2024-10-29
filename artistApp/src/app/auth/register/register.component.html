@@ -1,63 +1,174 @@
-<div class="container">
-  <h1>Registrati</h1>
-  <form>
-    <input
-      type="text"
-      class="form-control mb-3"
-      placeholder="Nome*"
-      name="nome"
-      required
-      [(ngModel)]="formData.name"
-    />
-    <input
-      type="text"
-      class="form-control mb-3"
-      placeholder="Cognome*"
-      name="cognome"
-      required
-      [(ngModel)]="formData.surname"
-    />
-    <input
-      type="text"
-      class="form-control mb-3"
-      placeholder="User Name*"
-      name="userName"
-      required
-      [(ngModel)]="formData.userName"
-    />
-    <input
-      type="text"
-      class="form-control mb-3"
-      placeholder="Profile picture (https://...)"
-      name="profilePic"
-      [(ngModel)]="formData.profilePic"
-    />
-    <input
-      type="text"
-      class="form-control mb-3"
-      placeholder="User bio"
-      name="bio"
-      [(ngModel)]="formData.bio"
-    />
-    <input
-      type="email"
-      class="form-control mb-3"
-      placeholder="Email*"
-      name="email"
-      required
-      [(ngModel)]="formData.email"
-    />
-    <input
-      type="password"
-      class="form-control mb-3"
-      placeholder="Password*"
-      name="password"
-      required
-      [(ngModel)]="formData.password"
-    />
-    <p class="text-danger fw-semibold">
-      I campi contrassegnati con * sono obbligatori
-    </p>
-    <button (click)="register()" class="btn btn-success">Registrati</button>
-  </form>
+<div
+  class="register-container d-flex align-items-center justify-content-center"
+>
+  <div class="register-card">
+    <div class="register-header">
+      <h1>Registrati</h1>
+      <p class="subtitle">Crea il tuo account per iniziare</p>
+    </div>
+
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="register()"
+      class="register-form"
+    >
+      <div class="form-row">
+        <div class="form-group half-width">
+          <label for="name">Nome *</label>
+          <div class="input-group">
+            <i class="bi bi-person"></i>
+            <input
+              id="name"
+              type="text"
+              class="form-control"
+              placeholder="Il tuo nome"
+              formControlName="name"
+            />
+          </div>
+          <div
+            *ngIf="f['name'].touched && f['name'].invalid"
+            class="error-message"
+          >
+            <div *ngIf="f['name'].errors?.['required']">
+              Il nome è obbligatorio
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group half-width">
+          <label for="surname">Cognome *</label>
+          <div class="input-group">
+            <i class="bi bi-person"></i>
+            <input
+              id="surname"
+              type="text"
+              class="form-control"
+              placeholder="Il tuo cognome"
+              formControlName="surname"
+            />
+          </div>
+          <div
+            *ngIf="f['surname'].touched && f['surname'].invalid"
+            class="error-message"
+          >
+            <div *ngIf="f['surname'].errors?.['required']">
+              Il cognome è obbligatorio
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="userName">Username *</label>
+        <div class="input-group">
+          <i class="bi bi-at"></i>
+          <input
+            id="userName"
+            type="text"
+            class="form-control"
+            placeholder="Scegli uno username"
+            formControlName="userName"
+          />
+        </div>
+        <div
+          *ngIf="f['userName'].touched && f['userName'].invalid"
+          class="error-message"
+        >
+          <div *ngIf="f['userName'].errors?.['required']">
+            Lo username è obbligatorio
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <div class="input-group">
+          <i class="bi bi-envelope"></i>
+          <input
+            id="email"
+            type="email"
+            class="form-control"
+            placeholder="La tua email"
+            formControlName="email"
+          />
+        </div>
+        <div
+          *ngIf="f['email'].touched && f['email'].invalid"
+          class="error-message"
+        >
+          <div *ngIf="f['email'].errors?.['required']">
+            L'email è obbligatoria
+          </div>
+          <div *ngIf="f['email'].errors?.['email']">
+            Inserisci un'email valida
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password *</label>
+        <div class="input-group">
+          <i class="bi bi-lock"></i>
+          <input
+            id="password"
+            type="password"
+            class="form-control"
+            placeholder="Crea una password"
+            formControlName="password"
+          />
+        </div>
+        <div
+          *ngIf="f['password'].touched && f['password'].invalid"
+          class="error-message"
+        >
+          <div *ngIf="f['password'].errors?.['required']">
+            La password è obbligatoria
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="profilePic">Immagine Profilo</label>
+        <div class="input-group">
+          <i class="bi bi-image"></i>
+          <input
+            id="profilePic"
+            type="text"
+            class="form-control"
+            placeholder="URL dell'immagine (https://...)"
+            formControlName="profilePic"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="bio">Biografia</label>
+        <div class="input-group">
+          <i class="bi bi-card-text"></i>
+          <textarea
+            id="bio"
+            class="form-control"
+            placeholder="Racconta qualcosa di te..."
+            formControlName="bio"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <p class="required-fields">* I campi contrassegnati sono obbligatori</p>
+
+      <button
+        type="submit"
+        class="register-button"
+        [disabled]="registerForm.invalid"
+      >
+        <span>Registrati</span>
+        <i class="bi bi-arrow-right"></i>
+      </button>
+
+      <div class="login-link">
+        Hai già un account? <a routerLink="/auth/login">Accedi</a>
+      </div>
+    </form>
+  </div>
 </div>
