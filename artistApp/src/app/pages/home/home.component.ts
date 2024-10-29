@@ -42,15 +42,19 @@ export class HomeComponent {
   }
 
   getComments() {
-    this.posts.forEach((post) => {
-      this.commentsSvc.getCommentsById(post.id).subscribe((comments) => {
-        this.comments = comments;
+    this.posts.filter((post) => {
+      this.commentsSvc.getCommentsOfPost(post.id).subscribe((comments) => {
+        this.comments = comments.filter(
+          (comment) => comment.post.id === post.id
+        );
+        console.log(this.comments);
       });
     });
   }
 
   showComments(postId: number) {
     if (postId) {
+      console.log(postId);
       this.visible = !this.visible;
     }
   }
