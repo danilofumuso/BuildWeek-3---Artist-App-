@@ -1,9 +1,9 @@
-<div class="card border-0 mb-4 p-0" *ngIf="post">
+<div class="card border-0 mb-1 p-0" *ngIf="post">
   <h6 class="card-title ms-2 mt-1">
     {{ post.title }}
   </h6>
   <img
-    class="img-fluid"
+    class="img-fluid rounded-bottom-2"
     [src]="post.imageUrl"
     [alt]="post.title"
     (click)="isCollapsed = !isCollapsed"

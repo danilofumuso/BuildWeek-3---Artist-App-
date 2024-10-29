@@ -5,6 +5,7 @@ import { iComment } from '../../interfaces/i-comment';
 import { AuthService } from '../../auth/auth.service';
 import { iUser } from '../../interfaces/i-user';
 import { map } from 'rxjs';
+import { CommentsService } from '../../services/comments.service';
 
 @Component({
   selector: 'app-home',
@@ -15,26 +16,42 @@ export class HomeComponent {
   posts: iPost[] = [];
   comments: iComment[] = [];
   users: iUser[] = [];
+  visible: boolean = false;
 
-  constructor(private postSvc: PostsService, private authSvc: AuthService) {}
+  constructor(
+    private postsSvc: PostsService,
+    private authSvc: AuthService,
+    private commentsSvc: CommentsService
+  ) {}
 
   ngOnInit() {
-    this.postSvc.getAllPosts().subscribe((posts) => {
+    this.postsSvc.getAllPosts().subscribe((posts) => {
       this.posts = posts;
-      console.log(this.posts);
+      this.getComments();
     });
 
-    //funzione per user loggato
-    this.authSvc.user$.pipe(map((user) => user?.id)).subscribe((userId) => {
-      this.authSvc
-        .getAllUsers()
-        .subscribe(
-          (users) => (this.users = users.filter((user) => user.id === userId))
-        );
+    this.authSvc.user$ //funzione per user loggato
+      .pipe(map((user) => user?.id))
+      .subscribe((userId) => {
+        this.authSvc
+          .getAllUsers()
+          .subscribe(
+            (users) => (this.users = users.filter((user) => user.id === userId))
+          );
+      });
+  }
+
+  getComments() {
+    this.posts.forEach((post) => {
+      this.commentsSvc.getCommentsById(post.id).subscribe((comments) => {
+        comments.forEach((comment) => {
+          this.comments.push(comment);
+        });
+      });
     });
   }
 
-  like() {
-    //posta in favorite (profilepage)
+  showComments() {
+    this.visible = !this.visible;
   }
 }

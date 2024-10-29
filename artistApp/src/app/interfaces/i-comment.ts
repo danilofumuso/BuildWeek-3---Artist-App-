@@ -1,5 +1,4 @@
 import { iPost } from './i-post';
-import { iUser } from './i-user';
 
 export interface iComment {
   id: number;
