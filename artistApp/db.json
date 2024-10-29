@@ -135,50 +135,20 @@
     {
       "id": 1,
       "comment": "This is my first comment",
-      "post": {
-        "id": 1,
-        "title": "My first post",
-        "user": {
-          "email": "riccardo@email.it",
-          "password": "$2a$10$nJ/j5B.xp8IIfVd6xVuJIe3ef3KcpKFJBEbBrFr7kH2gpNkRuBIPS",
-          "name": "Riccardo",
-          "surname": "Santilli",
-          "userName": "Santillis",
-          "id": 2
-        }
-      }
+      "postId": 1,
+      "userName": "giugiu"
     },
     {
       "id": 2,
       "comment": "Fuck *** lurid ass",
-      "post": {
-        "id": 3,
-        "title": "My first post",
-        "user": {
-          "email": "danilo@email.it",
-          "password": "$2a$10$qLXd6mKKWqlm3l2lwtyKR.uIvgkq/jsM7e2O7//7mpE11asm0gWc6",
-          "name": "Danilo",
-          "surname": "Dasdha",
-          "userName": "Sajasfjhf",
-          "id": 3
-        }
-      }
+      "postId": 3,
+      "userName": "giugiu"
     },
     {
       "id": 3,
       "comment": "No way!!!!!!! ahahahahaahahahahaahahhahaah ahahahahahahahahahahahahahahah",
-      "post": {
-        "id": 2,
-        "title": "My first post",
-        "user": {
-          "email": "riccardo@email.it",
-          "password": "$2a$10$nJ/j5B.xp8IIfVd6xVuJIe3ef3KcpKFJBEbBrFr7kH2gpNkRuBIPS",
-          "name": "Riccardo",
-          "surname": "Santilli",
-          "userName": "Santillis",
-          "id": 2
-        }
-      }
+      "postId": 2,
+      "userName": "giugiu"
     }
   ],
   "favorites": []

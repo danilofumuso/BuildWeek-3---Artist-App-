@@ -1,3 +1,4 @@
+import { PostComponent } from './../../shared/post/post.component';
 import { Component } from '@angular/core';
 import { iPost } from '../../interfaces/i-post';
 import { PostsService } from '../../services/posts.service';
@@ -27,7 +28,6 @@ export class HomeComponent {
   ngOnInit() {
     this.postsSvc.getAllPosts().subscribe((posts) => {
       this.posts = posts;
-      this.getComments();
     });
 
     this.authSvc.user$ //funzione per user loggato
@@ -39,23 +39,5 @@ export class HomeComponent {
             (users) => (this.users = users.filter((user) => user.id === userId))
           );
       });
-  }
-
-  getComments() {
-    this.posts.filter((post) => {
-      this.commentsSvc.getCommentsOfPost(post.id).subscribe((comments) => {
-        this.comments = comments.filter(
-          (comment) => comment.post.id === post.id
-        );
-        console.log(this.comments);
-      });
-    });
-  }
-
-  showComments(postId: number) {
-    if (postId) {
-      console.log(postId);
-      this.visible = !this.visible;
-    }
   }
 }
