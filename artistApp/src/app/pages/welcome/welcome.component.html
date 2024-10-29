@@ -1,1 +1,29 @@
-<p>welcome works!</p>
+<div
+  class="hero text-center text-white d-flex align-items-center justify-content-center"
+>
+  <div class="container">
+    <h1 class="display-3">Benvenuto su CreativeSpace!</h1>
+    <p class="lead">Esplora e condividi la tua creatività.</p>
+    <a routerLink="/auth/login" class="btn btn-outline-light btn-lg me-2"
+      >Accedi</a
+    >
+    <a routerLink="/auth/register" class="btn btn-outline-light btn-lg"
+      >Registrati</a
+    >
+  </div>
+</div>
+<div>
+  <ngb-carousel *ngFor="let post of posts">
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="{{ post.imageUrl }}" alt="Random first slide" />
+      </div>
+      <div class="carousel-caption">
+        <h3>
+          {{ post.title }} <small>{{ post.user }}</small>
+        </h3>
+        <p>{{ post.caption }}</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
