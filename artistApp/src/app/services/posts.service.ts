@@ -12,4 +12,8 @@ export class PostsService {
   getAllPosts() {
     return this.http.get<iPost[]>(environment.postsUrl);
   }
+
+  createPost(post: iPost) {
+    return this.http.post<iPost>(environment.postsUrl, post);
+  }
 }

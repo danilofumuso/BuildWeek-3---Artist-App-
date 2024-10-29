@@ -1,32 +1,14 @@
 {
   "users": [
     {
-      "email": "riccardo@email.it",
-      "password": "$2a$10$nJ/j5B.xp8IIfVd6xVuJIe3ef3KcpKFJBEbBrFr7kH2gpNkRuBIPS",
-      "name": "Riccardo",
-      "surname": "Santilli",
-      "userName": "Santillis",
-      "id": 2
-    },
-    {
-      "email": "lui@gi.it",
-      "password": "$2a$10$FPlWrX.3ZnNPGIqKmnrBuuxFLeGnL7blC7zMmlqL17rUP91C.o/5W",
-      "name": "luigi",
-      "surname": "carannante",
-      "userName": "luisss",
-      "profilePic": "",
-      "bio": "epicode student",
-      "id": 3
-    },
-    {
-      "email": "jkhjkh@lkjh",
-      "password": "$2a$10$2enX9NTR40GafOyZkHG3jeTDnaVFwshyrUHYCdpOZ1do9.T90mntq",
-      "name": "aaaaa",
-      "surname": "bbbbb",
-      "userName": "aabb",
-      "profilePic": "",
-      "bio": "",
-      "id": 4
+      "email": "rik@san.it",
+      "password": "$2a$10$lKdC5LGmExowonvUycFQNOadeRGlX9lp70DUXtmpWr0wXSSiJ3fju",
+      "name": "rik",
+      "surname": "san",
+      "userName": "rik",
+      "profilePic": "https://www.nationalgeographic.it/upload/ngi-hero/cover-1685960847724-Hero_100.jpg",
+      "bio": "ciao sono io",
+      "id": 1
     }
   ],
   "posts": [
@@ -43,6 +25,48 @@
       },
       "imageUrl": "https://as2.ftcdn.net/v2/jpg/02/90/72/99/1000_F_290729930_ggkjq8SuasvqDf6qWRUNGpjBps23tblQ.jpg",
       "caption": "This is my first post"
+    },
+    {
+      "id": 2,
+      "title": "prova",
+      "imageUrl": "https://www.nationalgeographic.it/upload/ngi-hero/cover-1685960847724-Hero_100.jpg",
+      "caption": "prova 2",
+      "date": "2024-10-29T11:01:42.641Z",
+      "user": {
+        "email": "rik@san.it",
+        "name": "rik",
+        "surname": "san",
+        "userName": "rik",
+        "id": 1
+      }
+    },
+    {
+      "id": 3,
+      "title": "prova 3",
+      "imageUrl": "https://i0.wp.com/fotografinviaggio.it/wp-content/uploads/2023/04/Immagine-copertina-per-blog-2-21.jpg?fit=1000%2C662&ssl=1",
+      "caption": "altra prova",
+      "date": "2024-10-29T11:02:06.052Z",
+      "user": {
+        "email": "rik@san.it",
+        "name": "rik",
+        "surname": "san",
+        "userName": "rik",
+        "id": 1
+      }
+    },
+    {
+      "id": 4,
+      "title": "danilo",
+      "imageUrl": "https://img.freepik.com/foto-gratuito/amore-romanticismo-cuore-di-carta-perforata_53876-87.jpg",
+      "caption": "è fumuso",
+      "date": "2024-10-29T11:14:12.286Z",
+      "user": {
+        "email": "rik@san.it",
+        "name": "rik",
+        "surname": "san",
+        "userName": "rik",
+        "id": 1
+      }
     }
   ],
   "comments": [

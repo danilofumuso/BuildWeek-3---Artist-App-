@@ -1,1 +1,93 @@
-<p>profile works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div
+      class="col-3 text-bg-black border-black border-end"
+      *ngFor="let user of users"
+    >
+      <div class="d-flex flex-column align-items-center py-4">
+        <div class="profile-pic-container mb-4">
+          <img
+            *ngIf="user.profilePic"
+            [src]="user.profilePic"
+            alt="Profile Picture"
+            class="rounded-circle border border-3 border-secondary"
+            style="width: 150px; height: 150px; object-fit: cover"
+            onerror="this.src='assets/default-avatar.png'"
+          />
+          <!-- Default Avatar if no profile pic -->
+          <div
+            *ngIf="!user.profilePic"
+            class="rounded-circle border border-3 border-secondary bg-secondary d-flex align-items-center justify-content-center"
+            style="width: 150px; height: 150px"
+          >
+            <i class="bi bi-person-fill fs-1 text-white"></i>
+          </div>
+        </div>
+
+        <div class="user-info text-center w-100">
+          <h2 class="fs-4 fw-bold mb-3 text-primary-emphasis">
+            {{ user.userName }}
+          </h2>
+
+          <div class="mb-4">
+            <h4 class="fs-5 mb-2">{{ user.name }} {{ user.surname }}</h4>
+          </div>
+
+          <div class="mb-4" *ngIf="user.bio">
+            <p class="text-muted fs-6 px-3">{{ user.bio }}</p>
+          </div>
+
+          <div class="text-muted fs-6 word-break">
+            <i class="bi bi-envelope-fill me-2"></i>
+            {{ user.email }}
+          </div>
+        </div>
+        <button class="btn btn-primary mt-3" (click)="toggleCreatePost()">
+          Crea Post
+        </button>
+      </div>
+
+      <!-- Form per la creazione del post -->
+      <div *ngIf="showCreatePostForm" class="post-form">
+        <form (ngSubmit)="createPost()">
+          <div class="mb-3">
+            <label for="title" class="form-label">Titolo</label>
+            <input
+              type="text"
+              id="title"
+              class="form-control"
+              [(ngModel)]="newPost.title"
+              name="title"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="imageUrl" class="form-label">URL Immagine</label>
+            <input
+              type="text"
+              id="imageUrl"
+              class="form-control"
+              [(ngModel)]="newPost.imageUrl"
+              name="imageUrl"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="caption" class="form-label">Descrizione</label>
+            <textarea
+              id="caption"
+              class="form-control"
+              [(ngModel)]="newPost.caption"
+              name="caption"
+            ></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-success">POSTA!</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- sezione crea post e post dell'utente -->
+<div class="col-8"></div>

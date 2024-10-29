@@ -21,6 +21,7 @@ export class HomeComponent {
   ngOnInit() {
     this.postSvc.getAllPosts().subscribe((posts) => {
       this.posts = posts;
+      console.log(this.posts);
     });
 
     //funzione per user loggato
@@ -31,5 +32,9 @@ export class HomeComponent {
           (users) => (this.users = users.filter((user) => user.id === userId))
         );
     });
+  }
+
+  like() {
+    //posta in favorite (profilepage)
   }
 }
