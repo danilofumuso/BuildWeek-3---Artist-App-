@@ -1,5 +1,5 @@
 .hero {
-  height: 80vh;
+  height: 60vh;
   background: linear-gradient(rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)),
 }
@@ -29,6 +29,9 @@
 .carousel-control-next {
   filter: brightness(0.7);
 }
+ .lead {
+  font-weight: 600;
+ }
 
 @media (max-width: 768px) {
   .hero h1 {
