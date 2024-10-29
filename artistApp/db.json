@@ -80,10 +80,38 @@
     },
     {
       "id": 5,
-      "title": "nuovo",
-      "imageUrl": "https://thumbs.dreamstime.com/b/superficie-praticante-il-surfing-dell-acqua-onda-di-oceano-mare-124362369.jpg",
-      "caption": "sta arrivando l'onda alta",
-      "date": "2024-10-29T11:32:15.647Z",
+      "title": "This is Halloween",
+      "imageUrl": "https://ih1.redbubble.net/image.2715483120.0792/flat,750x,075,f-pad,750x1000,f8f8f8.jpg",
+      "caption": "Il grande Jack",
+      "date": "2024-10-29T13:45:12.658Z",
+      "user": {
+        "email": "giu@lia.it",
+        "name": "giulia",
+        "surname": "maino",
+        "userName": "giugiu",
+        "id": 2
+      }
+    },
+    {
+      "id": 6,
+      "title": "spider",
+      "imageUrl": "https://i.redd.it/jbl4xiihwjta1.jpg",
+      "caption": "Ramonessss",
+      "date": "2024-10-29T13:49:11.392Z",
+      "user": {
+        "email": "giu@lia.it",
+        "name": "giulia",
+        "surname": "maino",
+        "userName": "giugiu",
+        "id": 2
+      }
+    },
+    {
+      "id": 7,
+      "title": "Sora ",
+      "imageUrl": "https://pbs.twimg.com/media/FLarslyXIAIvPtw.jpg:large",
+      "caption": "è pensieroso...",
+      "date": "2024-10-29T13:50:50.742Z",
       "user": {
         "email": "giu@lia.it",
         "name": "giulia",
