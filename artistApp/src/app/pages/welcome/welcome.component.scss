@@ -1,5 +1,5 @@
 .hero {
-  height: 60vh;
+  height: 50vh;
   background: linear-gradient(rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)),
 }
@@ -15,34 +15,51 @@
 }
 
 .carousel-container {
-  width: 90%;
-  max-width: 1000px;
-  margin: 0 auto;
+width: 100vw;
+  max-width: 100%;
+  margin: 0;
+  position: relative
 }
+
+.small-card-img {
+  max-width: 500px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.card {
+  width: 500px;
+  transition: transform 0.2s ease;
+  z-index: 0;
+  overflow: hidden
+}
+
+.card:hover {
+  transform: scale(1.2);
+  z-index: 10;
+}
+
 
 .carousel-item {
   display: flex;
   justify-content: center;
+  gap: 5px;
 }
 
-.carousel-control-prev,
-.carousel-control-next {
-  filter: brightness(0.7);
-}
- .lead {
+.lead {
   font-weight: 600;
  }
 
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.5rem;
-  }
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: rgba(0, 0, 0, 0.9); // Colore più scuro al passaggio del mouse
+}
 
-  .hero p {
-    font-size: 1.2rem;
-  }
-
-  .carousel-container h2 {
-    font-size: 1.5rem;
-  }
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: white;
+  border-radius: 50%;
+}
+.d-flex {
+  gap: 10px; // Distanza tra le card
 }
