@@ -9,6 +9,16 @@
       "profilePic": "https://www.nationalgeographic.it/upload/ngi-hero/cover-1685960847724-Hero_100.jpg",
       "bio": "ciao sono io",
       "id": 1
+    },
+    {
+      "email": "giu@lia.it",
+      "password": "$2a$10$vxFLD0r.XyNgwFbePCxim.gm8dCdeXsz8kBznnz0gYmKiZbAhiIVi",
+      "name": "giulia",
+      "surname": "maino",
+      "userName": "giugiu",
+      "profilePic": "https://mammaioparto.com/wp-content/uploads/2020/04/mettere-il-soggetto-al-centro.jpg",
+      "bio": "ciao forza temmone!",
+      "id": 2
     }
   ],
   "posts": [
@@ -66,6 +76,20 @@
         "surname": "san",
         "userName": "rik",
         "id": 1
+      }
+    },
+    {
+      "id": 5,
+      "title": "nuovo",
+      "imageUrl": "https://thumbs.dreamstime.com/b/superficie-praticante-il-surfing-dell-acqua-onda-di-oceano-mare-124362369.jpg",
+      "caption": "sta arrivando l'onda alta",
+      "date": "2024-10-29T11:32:15.647Z",
+      "user": {
+        "email": "giu@lia.it",
+        "name": "giulia",
+        "surname": "maino",
+        "userName": "giugiu",
+        "id": 2
       }
     }
   ],
