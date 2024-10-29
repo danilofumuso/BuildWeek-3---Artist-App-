@@ -9,6 +9,7 @@ import { PostsService } from '../../services/posts.service';
   styleUrl: './welcome.component.scss',
 })
 export class WelcomeComponent implements OnInit {
+  isCollapsed: any;
   constructor(private postsSvc: PostsService) {}
   posts: iPost[] = [];
   ngOnInit() {

@@ -15,14 +15,21 @@
 <div>
   <ngb-carousel *ngFor="let post of posts">
     <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img src="{{ post.imageUrl }}" alt="Random first slide" />
-      </div>
-      <div class="carousel-caption">
-        <h3>
-          {{ post.title }} <small>{{ post.user }}</small>
-        </h3>
-        <p>{{ post.caption }}</p>
+      <div class="card border-0 mb-1 p-0" *ngIf="post">
+        <h6 class="card-title ms-2 mt-1">
+          {{ post.title }}
+        </h6>
+        <img
+          class="img-fluid rounded-bottom-2"
+          [src]="post.imageUrl"
+          [alt]="post.title"
+        />
+
+        <div class="card-body p-0 mt-2 ms-2">
+          <p>{{ post.user.userName }} &#8226; {{ post.caption }}</p>
+          <p></p>
+          <ng-content></ng-content>
+        </div>
       </div>
     </ng-template>
   </ngb-carousel>

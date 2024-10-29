@@ -19,6 +19,16 @@
       "profilePic": "https://mammaioparto.com/wp-content/uploads/2020/04/mettere-il-soggetto-al-centro.jpg",
       "bio": "ciao forza temmone!",
       "id": 2
+    },
+    {
+      "email": "ale@gmail.com",
+      "password": "$2a$10$5JX42e4R2TbZ.W93IpKWf.ttL0tam3HPXs4/hxllAudazhYHZ2mJC",
+      "name": "ale",
+      "surname": "russo",
+      "userName": "AleRusso",
+      "profilePic": "https://www.agenziadiecommerce.it/wp-content/uploads/2015/03/Utente.png",
+      "bio": "",
+      "id": 3
     }
   ],
   "posts": [
