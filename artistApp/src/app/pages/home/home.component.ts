@@ -42,16 +42,20 @@ export class HomeComponent {
   }
 
   getComments() {
-    this.posts.forEach((post) => {
-      this.commentsSvc.getCommentsById(post.id).subscribe((comments) => {
-        comments.forEach((comment) => {
-          this.comments.push(comment);
-        });
+    this.posts.filter((post) => {
+      this.commentsSvc.getCommentsOfPost(post.id).subscribe((comments) => {
+        this.comments = comments.filter(
+          (comment) => comment.post.id === post.id
+        );
+        console.log(this.comments);
       });
     });
   }
 
-  showComments() {
-    this.visible = !this.visible;
+  showComments(postId: number) {
+    if (postId) {
+      console.log(postId);
+      this.visible = !this.visible;
+    }
   }
 }
