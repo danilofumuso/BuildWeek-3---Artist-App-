@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { iComment } from '../../interfaces/i-comment';
+import { CommentsService } from '../../services/comments.service';
 
 @Component({
   selector: 'app-comment',
@@ -8,4 +9,18 @@ import { iComment } from '../../interfaces/i-comment';
 })
 export class CommentComponent {
   @Input() comment!: iComment | Partial<iComment>;
+  @Output() commentDeleted = new EventEmitter<number | undefined>();
+
+  constructor(private commentsSvc: CommentsService) {}
+
+  deleteComment(id: number | undefined) {
+    if (!id) {
+      return;
+    }
+    this.commentsSvc.deleteComment(id).subscribe(() => {
+      this.commentDeleted.emit(id);
+    });
+  }
+
+  updateComment() {}
 }

@@ -111,4 +111,12 @@ export class PostComponent {
   navigateToArtist(userId: number) {
     this.router.navigate(['/artist', userId]);
   }
+
+  //erdedita event (id del commento cancellato) dal figlio, poi filtra l'array di TUTTI i commenti per escludere quello ereditato
+  deleteComment(id: number | undefined) {
+    if (!id) {
+      return;
+    }
+    this.comments = this.comments.filter((comment) => comment.id !== id);
+  }
 }

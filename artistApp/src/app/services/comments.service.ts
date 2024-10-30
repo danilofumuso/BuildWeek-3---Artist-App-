@@ -16,20 +16,18 @@ export class CommentsService {
     );
   }
 
-  createComment(comment: Partial<iComment>): Observable<iComment> {
+  createComment(comment: iComment | Partial<iComment>): Observable<iComment> {
     return this.http.post<iComment>(`${environment.commentsUrl}`, comment);
   }
 
   updateComment(comment: iComment): Observable<iComment> {
     return this.http.put<iComment>(
-      `${environment.commentsUrl}?commentId=${comment.id}`,
+      `${environment.commentsUrl}/${comment.id}`,
       comment
     );
   }
 
-  deleteComment(comment: iComment): Observable<iComment> {
-    return this.http.delete<iComment>(
-      `${environment.commentsUrl}?commentId=${comment.id}`
-    );
+  deleteComment(id: number) {
+    return this.http.delete(`${environment.commentsUrl}/${id}`);
   }
 }
