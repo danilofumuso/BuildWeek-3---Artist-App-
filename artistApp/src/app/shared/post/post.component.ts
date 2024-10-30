@@ -13,7 +13,7 @@ import { iFavorite } from '../../interfaces/i-favorite';
 })
 export class PostComponent {
   @Input() post!: iPost;
-  comments: iComment[] = [];
+  comments: (iComment | Partial<iComment>)[] = [{}];
   favorites: iFavorite[] = [];
   isVisible: boolean = true;
   callBlocking: boolean = false;
@@ -41,7 +41,7 @@ export class PostComponent {
     }
 
     this.commentsSvc.getCommentsOfPost(postId).subscribe((comments) => {
-      this.comments = comments;
+      this.comments = [...comments];
       this.callBlocking = !this.callBlocking;
     });
   }

@@ -7,5 +7,5 @@ import { iComment } from '../../interfaces/i-comment';
   styleUrl: './comment.component.scss',
 })
 export class CommentComponent {
-  @Input() comment!: iComment;
+  @Input() comment!: iComment | Partial<iComment>;
 }
