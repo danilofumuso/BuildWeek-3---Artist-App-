@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div
-      class="col-3 text-bg-black border-black border-end"
+      class="col-3 d-none d-md-block text-bg-black border-black border-end"
       *ngFor="let user of users"
     >
       <div class="d-flex flex-column align-items-center py-4">
@@ -14,7 +14,7 @@
             style="width: 150px; height: 150px; object-fit: cover"
             onerror="this.src='assets/default-avatar.png'"
           />
-          <!-- Default Avatar if no profile pic -->
+
           <div
             *ngIf="!user.profilePic"
             class="rounded-circle border border-3 border-secondary bg-secondary d-flex align-items-center justify-content-center"
@@ -105,13 +105,13 @@
             <app-post [post]="post"></app-post>
             <div class="card-footer position-absolute top-0">
               <button
-                class="btn btn-primary btn-sm me-2 rounded-circle"
+                class="btn btn-outline-primary btn-sm border-0"
                 (click)="toggleCreatePost(post)"
               >
-                <i class="bi bi-pencil rounded-circle"></i>
+                <i class="bi bi-pencil"></i>
               </button>
               <button
-                class="btn btn-danger btn-sm rounded-circle"
+                class="btn btn-outline-danger btn-sm border-0"
                 (click)="deletePost(post.id)"
               >
                 <i class="bi bi-trash"></i>
@@ -124,7 +124,10 @@
       <div>
         <h3>Preferiti</h3>
         <div class="row">
-          <div class="col-4" *ngFor="let post of userPosts">
+          <div
+            class="col-12 col-md-6 col-lg-3 mb-5"
+            *ngFor="let post of favorites || []"
+          >
             <app-post [post]="post"></app-post>
           </div>
         </div>
