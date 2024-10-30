@@ -34,6 +34,5 @@ export class PostComponent {
   }
   navigateToArtist(userId: number) {
     this.router.navigate(['/artist', userId]);
-    console.log(userId);
   }
 }
