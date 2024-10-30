@@ -14,15 +14,15 @@ import { AuthService } from '../../auth/auth.service';
 @Component({
   selector: 'app-comment-input',
   templateUrl: './comment-input.component.html',
-  styleUrl: './comment-input.component.scss',
+  styleUrls: ['./comment-input.component.scss'],
 })
 export class CommentInputComponent {
   @ViewChild('form') form!: NgForm;
-  @Input() comment!: iComment | Partial<iComment>;
+  @Input() comment!: iComment | Partial<iComment>; // Proprietà comment esistente
   @Input() postId!: number;
-  user!: iUser;
   @Output() commentSubmitted = new EventEmitter<iComment>();
 
+  user!: iUser;
   newComment: Partial<iComment> = {};
 
   constructor(
@@ -31,18 +31,38 @@ export class CommentInputComponent {
   ) {}
 
   ngOnInit() {
+    // Recupera l'utente dall'AuthService
     this.authSvc.user$.subscribe((user) => {
       if (user) this.user = user;
     });
+
+    // Prepopola newComment se comment esiste (caso di modifica)
+    if (this.comment) {
+      this.newComment = { ...this.comment };
+    }
   }
 
   submit() {
-    this.newComment.date = new Date().toISOString();
-    this.newComment.userName = this.user.userName;
-    this.newComment.postId = this.postId;
-    this.commentsSvc.createComment(this.newComment).subscribe((comment) => {
-      this.commentSubmitted.emit(comment);
-      this.form.reset();
-    });
+    if (this.comment && this.comment.id) {
+      // Caso di aggiornamento del commento
+      this.commentsSvc
+        .updateComment(this.newComment as iComment)
+        .subscribe((updatedComment) => {
+          this.commentSubmitted.emit(updatedComment);
+          this.form.reset();
+        });
+    } else {
+      // Caso di creazione di un nuovo commento
+      this.newComment.date = new Date().toISOString();
+      this.newComment.userName = this.user.userName;
+      this.newComment.postId = this.postId;
+
+      this.commentsSvc
+        .createComment(this.newComment as iComment)
+        .subscribe((comment) => {
+          this.commentSubmitted.emit(comment);
+          this.form.reset();
+        });
+    }
   }
 }

@@ -20,7 +20,7 @@ export class CommentsService {
     return this.http.post<iComment>(`${environment.commentsUrl}`, comment);
   }
 
-  updateComment(comment: iComment): Observable<iComment> {
+  updateComment(comment: iComment) {
     return this.http.put<iComment>(
       `${environment.commentsUrl}/${comment.id}`,
       comment
