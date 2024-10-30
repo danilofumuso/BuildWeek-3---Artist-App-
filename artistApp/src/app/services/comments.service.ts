@@ -16,7 +16,7 @@ export class CommentsService {
     );
   }
 
-  createComment(comment: Partial<iComment>): Observable<iComment> {
+  createComment(comment: iComment): Observable<iComment> {
     return this.http.post<iComment>(`${environment.commentsUrl}`, comment);
   }
 
@@ -27,9 +27,7 @@ export class CommentsService {
     );
   }
 
-  deleteComment(comment: iComment): Observable<iComment> {
-    return this.http.delete<iComment>(
-      `${environment.commentsUrl}?commentId=${comment.id}`
-    );
+  deleteComment(id: number) {
+    return this.http.delete(`${environment.commentsUrl}/${id}`);
   }
 }

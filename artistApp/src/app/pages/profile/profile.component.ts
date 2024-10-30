@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
 import { PostsService } from '../../services/posts.service';
-import { map } from 'rxjs/operators';
 import { iUser } from '../../interfaces/i-user';
 import { iPost } from '../../interfaces/i-post';
-import { iFavorite } from '../../interfaces/i-favorite';
 import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
