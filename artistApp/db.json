@@ -132,38 +132,12 @@
       "id": 1
     },
     {
-      "comment": "bla bla bla",
-      "date": "2024-10-30T15:17:22.018Z",
+      "comment": "ciao",
+      "date": "2024-10-30T15:40:23.066Z",
       "userName": "giugiu",
       "postId": 3,
       "id": 2
-    },
-    {
-      "comment": "prova",
-      "date": "2024-10-30T15:17:24.122Z",
-      "userName": "giugiu",
-      "postId": 3,
-      "id": 3
     }
   ],
-  "favorites": [
-    {
-      "userId": 2,
-      "post": {
-        "id": 2,
-        "title": "prova",
-        "imageUrl": "https://www.nationalgeographic.it/upload/ngi-hero/cover-1685960847724-Hero_100.jpg",
-        "caption": "prova 2",
-        "date": "2024-10-29T11:01:42.641Z",
-        "user": {
-          "email": "rik@san.it",
-          "name": "rik",
-          "surname": "san",
-          "userName": "rik",
-          "id": 1
-        }
-      },
-      "id": 2
-    }
-  ]
+  "favorites": []
 }
