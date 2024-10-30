@@ -310,6 +310,24 @@
         "caption": "This is my first post"
       },
       "id": 8
+    },
+    {
+      "userId": 2,
+      "post": {
+        "id": 8,
+        "title": "al mare",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2R_yOMZO2KcgMYrNS7WXQ_oiOiUM1e6aa0Q&s",
+        "caption": "tramonto",
+        "date": "2024-10-30T09:57:59.722Z",
+        "user": {
+          "email": "luigi@car.it",
+          "name": "luigi",
+          "surname": "carannante",
+          "userName": "GiGiCar",
+          "id": 5
+        }
+      },
+      "id": 9
     }
   ]
 }

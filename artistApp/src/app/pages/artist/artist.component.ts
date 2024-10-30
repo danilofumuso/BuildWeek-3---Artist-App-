@@ -17,31 +17,29 @@ export class ArtistComponent {
 
   constructor(
     private postSvc: PostsService,
-    private authSvc: AuthService,
-    private route: ActivatedRoute
-  ) {
-    this.route.params.subscribe((params) => {
-      const userName = params['userName'];
-      // Fetch artist data using the userName
-    });
-  }
+    private route: ActivatedRoute,
+    private authSvc: AuthService
+  ) {}
 
   ngOnInit() {
-    this.authSvc.user$.pipe(map((user) => user?.id)).subscribe((userId) => {
-      this.authSvc
-        .getAllUsers()
-        .subscribe(
-          (users) => (this.users = users.filter((user) => user.id === userId))
-        );
-    });
-    this.loadUserPosts();
+    const userId = +this.route.snapshot.paramMap.get('id')!; // Prendi l'ID dall'URL
+    this.loadUserData(userId);
+    this.loadUserPosts(userId);
   }
 
-  loadUserPosts() {
-    this.postSvc.getAllPosts().subscribe((posts) => {
-      this.userPosts = posts.filter(
-        (post) => post.user.id === this.users[0]?.id
+  loadUserData(userId: number) {
+    // Qui dovresti avere un metodo per caricare i dati dell'utente
+    // Ad esempio, puoi avere un servizio UsersService
+    this.authSvc
+      .getAllUsers()
+      .subscribe(
+        (users) => (this.users = users.filter((user) => user.id === userId))
       );
+  }
+
+  loadUserPosts(userId: number) {
+    this.postSvc.getAllPosts().subscribe((posts) => {
+      this.userPosts = posts.filter((post) => post.user.id === userId);
     });
   }
 }
