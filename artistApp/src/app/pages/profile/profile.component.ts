@@ -15,7 +15,7 @@ import { FavoritesService } from '../../services/favorites.service';
 export class ProfileComponent {
   users: iUser[] = [];
   userPosts: iPost[] = [];
-  favorites: iFavorite[] = [];
+  favorites: iPost[] = [];
   userId: number | null = null;
   showCreatePostForm = false;
   isEditing = false;
@@ -44,14 +44,35 @@ export class ProfileComponent {
   ) {}
 
   ngOnInit() {
-    this.authSvc.user$.pipe(map((user) => user?.id)).subscribe((userId) => {
+    this.authSvc.user$.subscribe((user) => {
+      if (user) {
+        this.userId = user.id;
+        this.loadUserData();
+      }
+    });
+
+    // Sottoscrizione ai cambiamenti dei preferiti
+    this.favoriteSvc.favoritesChanged$.subscribe(() => {
+      this.loadFavorites();
+    });
+  }
+
+  loadUserData() {
+    if (this.userId) {
+      // Carica gli utenti
       this.authSvc
         .getAllUsers()
         .subscribe(
-          (users) => (this.users = users.filter((user) => user.id === userId))
+          (users) =>
+            (this.users = users.filter((user) => user.id === this.userId))
         );
-    });
-    this.loadUserPosts();
+
+      // Carica i post
+      this.loadUserPosts();
+
+      // Carica i preferiti
+      this.loadFavorites();
+    }
   }
 
   loadUserPosts() {
@@ -64,12 +85,10 @@ export class ProfileComponent {
 
   toggleCreatePost(post?: iPost) {
     if (post) {
-      // Se viene passato un post, stiamo modificando
       this.isEditing = true;
       this.editingPostId = post.id;
       this.newPost = { ...post };
     } else {
-      // Se non viene passato un post, stiamo creando
       this.isEditing = false;
       this.editingPostId = null;
       this.resetForm();
@@ -77,7 +96,6 @@ export class ProfileComponent {
     this.showCreatePostForm = true;
   }
 
-  // funzione svuota form
   resetForm() {
     this.newPost = {
       id: 0,
@@ -96,11 +114,9 @@ export class ProfileComponent {
     };
   }
 
-  //creo o aggiorno il post al submit
   createOrUpdatePost() {
     this.authSvc.user$.subscribe((user) => {
       if (user && this.newPost.title && this.newPost.caption) {
-        // Completa i dettagli utente nel post
         this.newPost.user = {
           email: user.email,
           password: user.password,
@@ -111,33 +127,31 @@ export class ProfileComponent {
         };
 
         if (this.isEditing && this.editingPostId) {
-          // Aggiorna post esistente
           const postToUpdate = this.newPost as iPost;
-          this.postSvc.updatePost(postToUpdate).subscribe(
-            (updatedPost) => {
+          this.postSvc.updatePost(postToUpdate).subscribe({
+            next: (updatedPost) => {
               console.log('Post aggiornato con successo:', updatedPost);
-              this.loadUserPosts(); // Ricarica i post
+              this.loadUserPosts();
               this.showCreatePostForm = false;
               this.resetForm();
             },
-            (error) => {
+            error: (error) => {
               console.error("Errore nell'aggiornamento del post:", error);
-            }
-          );
+            },
+          });
         } else {
-          // Crea nuovo post
           const postToCreate = this.newPost as iPost;
-          this.postSvc.createPost(postToCreate).subscribe(
-            (post) => {
+          this.postSvc.createPost(postToCreate).subscribe({
+            next: (post) => {
               console.log('Post creato con successo:', post);
-              this.loadUserPosts(); // Ricarica i post
+              this.loadUserPosts();
               this.showCreatePostForm = false;
               this.resetForm();
             },
-            (error) => {
+            error: (error) => {
               console.error('Errore nella creazione del post:', error);
-            }
-          );
+            },
+          });
         }
       }
     });
@@ -145,35 +159,58 @@ export class ProfileComponent {
 
   deletePost(id: number) {
     if (confirm('Sei sicuro di voler eliminare questo post?')) {
-      this.postSvc.deletePost(id).subscribe(
-        () => {
+      this.postSvc.deletePost(id).subscribe({
+        next: () => {
           console.log('Post eliminato con successo');
-          this.loadUserPosts(); // Ricarica i post
+          this.loadUserPosts();
         },
-        (error) => {
+        error: (error) => {
           console.error("Errore nell'eliminazione del post:", error);
-        }
-      );
-    }
-  }
-
-  //favorites
-
-  loadFavorites() {
-    if (this.userId) {
-      this.favoriteSvc.getFavorites(this.userId).subscribe((favorites) => {
-        this.favorites = favorites;
+        },
       });
     }
   }
 
-  removeFromFavorites(favorite: iFavorite) {
-    if (
-      confirm(`Vuoi davvero rimuovere ${favorite.post.title} dai preferiti?`)
-    ) {
-      this.favoriteSvc
-        .removeFromFavorites(favorite)
-        .subscribe(() => this.loadFavorites());
+  loadFavorites() {
+    if (this.userId) {
+      this.favoriteSvc.getFavorites(this.userId).subscribe({
+        next: (favorites) => {
+          // Estrai solo i post dai preferiti
+          this.favorites = favorites.map((fav) => fav.post);
+        },
+        error: (error) => {
+          console.error('Errore nel caricamento dei preferiti:', error);
+        },
+      });
+    }
+  }
+
+  removeFromFavorites(post: iPost) {
+    if (this.userId) {
+      this.favoriteSvc.getFavorites(this.userId).subscribe({
+        next: (favorites) => {
+          const favoriteToRemove = favorites.find(
+            (fav) => fav.post.id === post.id
+          );
+          if (
+            favoriteToRemove &&
+            confirm(`Vuoi davvero rimuovere ${post.title} dai preferiti?`)
+          ) {
+            this.favoriteSvc.removeFromFavorites(favoriteToRemove).subscribe({
+              next: () => {
+                this.loadFavorites();
+                this.favoriteSvc.notifyFavoritesChanged();
+              },
+              error: (error) => {
+                console.error('Errore nella rimozione del preferito:', error);
+              },
+            });
+          }
+        },
+        error: (error) => {
+          console.error('Errore nel recupero dei preferiti:', error);
+        },
+      });
     }
   }
 }

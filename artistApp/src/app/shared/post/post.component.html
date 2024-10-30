@@ -1,20 +1,34 @@
 <div class="card border-0 mb-1 p-0" *ngIf="post">
-  <h6 class="card-title ms-2 mt-1">
-    {{ post.title }}
-  </h6>
-  <img
-    (click)="getComments(post.id)"
-    class="img-fluid rounded-bottom-2"
-    [src]="post.imageUrl"
-    [alt]="post.title"
-    (click)="isCollapsed = !isCollapsed"
-  />
+  <!-- Contenitore con aspect ratio fissa -->
+  <div class="position-relative">
+    <h6 class="card-title ms-2 mt-1">
+      {{ post.title }}
+    </h6>
+    <!-- Wrapper per mantenere aspect ratio 4:3 -->
+    <div class="position-relative" style="padding-bottom: 75%">
+      <img
+        (click)="getComments(post.id)"
+        class="position-absolute top-0 start-0 w-100 h-100 rounded-bottom-2 object-fit-cover"
+        [src]="post.imageUrl"
+        [alt]="post.title"
+        (click)="isCollapsed = !isCollapsed"
+      />
+    </div>
+  </div>
+
   <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
     <div class="card-body p-0 mt-2 ms-2">
       <p>{{ post.user.userName }} &#8226; {{ post.caption }}</p>
       <p>{{ post.date | date }}</p>
       <div class="d-flex py-2 justify-content-start">
-        <a><i class="bi bi-balloon-heart me-2"></i></a>
+        <a
+          (click)="addToFavorites(post)"
+          class="btn btn-link text-danger border-0 p-0"
+          ><i
+            class="bi me-2"
+            [ngClass]="isFavorite(post) ? 'bi-heart-fill' : 'bi-heart'"
+          ></i
+        ></a>
         <a (click)="showComments()"
           ><i class="bi bi-chat-left-text-fill"></i
         ></a>
@@ -22,6 +36,7 @@
     </div>
   </div>
 </div>
+
 <div #collapse="ngbCollapse" [(ngbCollapse)]="isVisible">
   <div class="bg-white rounded-2" *ngFor="let comment of comments">
     <app-comment [comment]="comment"></app-comment>
