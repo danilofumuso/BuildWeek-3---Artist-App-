@@ -17,6 +17,7 @@ import { CommentsService } from '../../services/comments.service';
 export class CommentComponent {
   @Input() comment!: iComment | Partial<iComment>;
   @Output() commentDeleted = new EventEmitter<number | undefined>();
+  @Output() commentUpdated = new EventEmitter<number | undefined>();
   @ViewChild('form') form!: NgForm; // Aggiungi il ViewChild per il tuo form
 
   editingCommentId?: number; // Aggiungi una variabile per tenere traccia del commento in modifica
@@ -33,7 +34,7 @@ export class CommentComponent {
     });
   }
 
-  startEdit(comment: iComment | Partial<iComment>) {
+  updateThisComment(comment: iComment | Partial<iComment>) {
     if (comment && comment.id) {
       this.editingCommentId = comment.id;
       this.newComment = { ...comment }; // Prepopola i dati del commento in modifica
@@ -45,8 +46,8 @@ export class CommentComponent {
       this.commentsSvc
         .updateComment(this.newComment as iComment)
         .subscribe(() => {
-          this.editingCommentId = undefined; // Esci dalla modalità di modifica
-          this.newComment = {}; // Resetta il commento
+          this.commentUpdated.emit(this.newComment.id);
+          this.form.reset();
         });
     }
   }

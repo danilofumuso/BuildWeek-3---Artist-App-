@@ -50,6 +50,7 @@
   <div class="bg-white rounded-2" *ngFor="let comment of comments">
     <app-comment
       (commentDeleted)="deleteComment($event)"
+      (commentUpdated)="updateComment($event)"
       [comment]="comment"
     ></app-comment>
   </div>

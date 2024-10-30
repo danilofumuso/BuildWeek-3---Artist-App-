@@ -119,4 +119,12 @@ export class PostComponent {
     }
     this.comments = this.comments.filter((comment) => comment.id !== id);
   }
+
+  updateComment(id: number | undefined) {
+    if (!id) {
+      return;
+    }
+    this.comments = this.comments;
+    console.log(this.comments);
+  }
 }

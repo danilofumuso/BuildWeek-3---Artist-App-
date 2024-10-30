@@ -35,11 +35,6 @@ export class CommentInputComponent {
     this.authSvc.user$.subscribe((user) => {
       if (user) this.user = user;
     });
-
-    // Prepopola newComment se comment esiste (caso di modifica)
-    if (this.comment) {
-      this.newComment = { ...this.comment };
-    }
   }
 
   submit() {
