@@ -5,6 +5,7 @@ import { CommentsService } from '../../services/comments.service';
 import { FavoritesService } from '../../services/favorites.service';
 import { AuthService } from '../../auth/auth.service';
 import { iFavorite } from '../../interfaces/i-favorite';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -23,6 +24,7 @@ export class PostComponent {
   constructor(
     private authSvc: AuthService,
     private commentsSvc: CommentsService,
+    private router: Router,
     private favoriteSvc: FavoritesService
   ) {}
 
@@ -32,6 +34,11 @@ export class PostComponent {
         this.userId = user.id;
         this.loadFavorites();
       }
+    });
+
+    // Sottoscrizione ai cambiamenti dei preferiti
+    this.favoriteSvc.favoritesChanged$.subscribe(() => {
+      this.loadFavorites();
     });
   }
 
@@ -50,39 +57,59 @@ export class PostComponent {
     this.isVisible = !this.isVisible;
   }
 
-  //favorites
-
   loadFavorites() {
     if (this.userId) {
-      this.favoriteSvc.getFavorites(this.userId).subscribe((favorites) => {
-        this.favorites = favorites;
+      this.favoriteSvc.getFavorites(this.userId).subscribe({
+        next: (favorites) => {
+          this.favorites = favorites;
+        },
+        error: (error) => {
+          console.error('Errore nel caricamento dei preferiti:', error);
+        },
       });
     }
   }
 
   addToFavorites(post: iPost) {
-    if (this.userId) {
-      const isFavorite = this.isFavorite(post);
-      if (isFavorite) {
-        const favoriteToRemove = this.favorites.find(
-          (fav) => fav.post.id === post.id && fav.userId === this.userId
-        );
-        if (favoriteToRemove) {
-          this.favoriteSvc
-            .removeFromFavorites(favoriteToRemove)
-            .subscribe(() => this.loadFavorites());
-        }
-      } else {
-        const favorite: iFavorite = { userId: this.userId, post };
-        this.favoriteSvc
-          .addToFavorites(favorite)
-          .subscribe(() => this.loadFavorites());
+    if (!this.userId) return;
+
+    const isFavorite = this.isFavorite(post);
+    if (isFavorite) {
+      const favoriteToRemove = this.favorites.find(
+        (fav) => fav.post.id === post.id && fav.userId === this.userId
+      );
+      if (favoriteToRemove) {
+        this.favoriteSvc.removeFromFavorites(favoriteToRemove).subscribe({
+          next: () => {
+            this.loadFavorites();
+            this.favoriteSvc.notifyFavoritesChanged();
+          },
+          error: (error) => {
+            console.error('Errore nella rimozione del preferito:', error);
+          },
+        });
       }
-      console.log(this.favorites);
+    } else {
+      const favorite: iFavorite = { userId: this.userId, post };
+      this.favoriteSvc.addToFavorites(favorite).subscribe({
+        next: () => {
+          this.loadFavorites();
+          this.favoriteSvc.notifyFavoritesChanged();
+        },
+        error: (error) => {
+          console.error("Errore nell'aggiunta del preferito:", error);
+        },
+      });
     }
   }
 
   isFavorite(post: iPost): boolean {
-    return this.favorites.some((fav) => fav.post.id === post.id);
+    return this.favorites.some(
+      (fav) => fav.post.id === post.id && fav.userId === this.userId
+    );
+  }
+  navigateToArtist(userId: number) {
+    this.router.navigate(['/artist', userId]);
+    console.log(userId);
   }
 }
