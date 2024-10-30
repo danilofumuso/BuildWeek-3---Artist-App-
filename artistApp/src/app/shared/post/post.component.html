@@ -14,7 +14,15 @@
       <p>{{ post.user.userName }} &#8226; {{ post.caption }}</p>
       <p>{{ post.date | date }}</p>
       <div class="d-flex p-2 justify-content-between">
-        <a></a>
+        <a
+          (click)="addToFavorites(post)"
+          class="btn btn-link text-danger border-0 p-0"
+        >
+          <i
+            class="bi fs-5"
+            [ngClass]="isFavorite(post) ? 'bi-heart-fill' : 'bi-heart'"
+          ></i
+        ></a>
         <a (click)="showComments()"><i class="bi bi-arrows-expand"></i></a>
         <a><i class="bi bi-chat-left-text-fill"></i></a>
       </div>

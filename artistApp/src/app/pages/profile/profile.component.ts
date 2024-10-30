@@ -4,6 +4,8 @@ import { PostsService } from '../../services/posts.service';
 import { map } from 'rxjs/operators';
 import { iUser } from '../../interfaces/i-user';
 import { iPost } from '../../interfaces/i-post';
+import { iFavorite } from '../../interfaces/i-favorite';
+import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,6 +15,8 @@ import { iPost } from '../../interfaces/i-post';
 export class ProfileComponent {
   users: iUser[] = [];
   userPosts: iPost[] = [];
+  favorites: iFavorite[] = [];
+  userId: number | null = null;
   showCreatePostForm = false;
   isEditing = false;
   editingPostId: number | null = null;
@@ -33,7 +37,11 @@ export class ProfileComponent {
     },
   };
 
-  constructor(private postSvc: PostsService, private authSvc: AuthService) {}
+  constructor(
+    private postSvc: PostsService,
+    private authSvc: AuthService,
+    private favoriteSvc: FavoritesService
+  ) {}
 
   ngOnInit() {
     this.authSvc.user$.pipe(map((user) => user?.id)).subscribe((userId) => {
@@ -146,6 +154,26 @@ export class ProfileComponent {
           console.error("Errore nell'eliminazione del post:", error);
         }
       );
+    }
+  }
+
+  //favorites
+
+  loadFavorites() {
+    if (this.userId) {
+      this.favoriteSvc.getFavorites(this.userId).subscribe((favorites) => {
+        this.favorites = favorites;
+      });
+    }
+  }
+
+  removeFromFavorites(favorite: iFavorite) {
+    if (
+      confirm(`Vuoi davvero rimuovere ${favorite.post.title} dai preferiti?`)
+    ) {
+      this.favoriteSvc
+        .removeFromFavorites(favorite)
+        .subscribe(() => this.loadFavorites());
     }
   }
 }
