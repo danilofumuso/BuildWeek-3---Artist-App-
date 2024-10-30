@@ -49,7 +49,7 @@
 
       <!-- Form per la creazione del post -->
       <div *ngIf="showCreatePostForm" class="post-form">
-        <form (ngSubmit)="createPost()">
+        <form (ngSubmit)="createOrUpdatePost()">
           <div class="mb-3">
             <label for="title" class="form-label">Titolo</label>
             <input
@@ -81,13 +81,54 @@
             ></textarea>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-success">POSTA!</button>
+            <button type="submit" class="btn btn-success">Posta!</button>
+            <button
+              type="button"
+              class="btn btn-secondary ms-2"
+              (click)="showCreatePostForm = false; resetForm()"
+            >
+              Annulla
+            </button>
           </div>
         </form>
       </div>
     </div>
+    <!-- sezione post dell'utente e liked -->
+    <div class="col-8 mx-auto">
+      <div>
+        <h3>I miei post</h3>
+        <div class="row">
+          <div
+            class="col-12 col-md-6 col-lg-3 mb-5 position-relative"
+            *ngFor="let post of userPosts"
+          >
+            <app-post [post]="post"></app-post>
+            <div class="card-footer position-absolute top-0">
+              <button
+                class="btn btn-outline-primary btn-sm me-2 rounded-circle"
+                (click)="toggleCreatePost(post)"
+              >
+                <i class="bi bi-pencil rounded-circle"></i>
+              </button>
+              <button
+                class="btn btn-outline-danger btn-sm rounded-circle"
+                (click)="deletePost(post.id)"
+              >
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3>Preferiti</h3>
+        <div class="row">
+          <div class="col-4" *ngFor="let post of userPosts">
+            <app-post [post]="post"></app-post>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-<!-- sezione crea post e post dell'utente -->
-<div class="col-8"></div>

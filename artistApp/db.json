@@ -19,6 +19,22 @@
       "profilePic": "https://mammaioparto.com/wp-content/uploads/2020/04/mettere-il-soggetto-al-centro.jpg",
       "bio": "ciao forza temmone!",
       "id": 2
+    },
+    {
+      "email": "ale@gmail.com",
+      "password": "$2a$10$5JX42e4R2TbZ.W93IpKWf.ttL0tam3HPXs4/hxllAudazhYHZ2mJC",
+      "name": "ale",
+      "surname": "russo",
+      "userName": "AleRusso",
+      "profilePic": "https://www.agenziadiecommerce.it/wp-content/uploads/2015/03/Utente.png",
+      "bio": "",
+      "id": 3
+    },
+    {
+      "email": "uno@uno.uno",
+      "password": "$2a$10$h14yJ82qx4uWoBgnpJWkZeQEW/dz6VWvr2eOlMKmxkKCbPtFsIs3q",
+      "name": "uno",
+      "id": 4
     }
   ],
   "posts": [
@@ -80,10 +96,24 @@
     },
     {
       "id": 5,
-      "title": "nuovo",
-      "imageUrl": "https://thumbs.dreamstime.com/b/superficie-praticante-il-surfing-dell-acqua-onda-di-oceano-mare-124362369.jpg",
-      "caption": "sta arrivando l'onda alta",
-      "date": "2024-10-29T11:32:15.647Z",
+      "title": "This is Halloween",
+      "imageUrl": "https://ih1.redbubble.net/image.2715483120.0792/flat,750x,075,f-pad,750x1000,f8f8f8.jpg",
+      "caption": "Il grande Jack",
+      "date": "2024-10-29T13:45:12.658Z",
+      "user": {
+        "email": "giu@lia.it",
+        "name": "giulia",
+        "surname": "maino",
+        "userName": "giugiu",
+        "id": 2
+      }
+    },
+    {
+      "id": 6,
+      "title": "spider man",
+      "imageUrl": "https://i.redd.it/jbl4xiihwjta1.jpg",
+      "caption": "Ramonessss played in the 70's",
+      "date": "2024-10-29T13:49:11.392Z",
       "user": {
         "email": "giu@lia.it",
         "name": "giulia",
@@ -113,5 +143,24 @@
       "userName": "giugiu"
     }
   ],
-  "favorites": []
+  "favorites": [
+    {
+      "userId": 2,
+      "post": {
+        "id": 2,
+        "title": "prova",
+        "imageUrl": "https://www.nationalgeographic.it/upload/ngi-hero/cover-1685960847724-Hero_100.jpg",
+        "caption": "prova 2",
+        "date": "2024-10-29T11:01:42.641Z",
+        "user": {
+          "email": "rik@san.it",
+          "name": "rik",
+          "surname": "san",
+          "userName": "rik",
+          "id": 1
+        }
+      },
+      "id": 2
+    }
+  ]
 }

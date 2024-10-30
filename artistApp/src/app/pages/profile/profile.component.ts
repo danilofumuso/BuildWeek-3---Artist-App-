@@ -4,6 +4,8 @@ import { PostsService } from '../../services/posts.service';
 import { map } from 'rxjs/operators';
 import { iUser } from '../../interfaces/i-user';
 import { iPost } from '../../interfaces/i-post';
+import { iFavorite } from '../../interfaces/i-favorite';
+import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +14,12 @@ import { iPost } from '../../interfaces/i-post';
 })
 export class ProfileComponent {
   users: iUser[] = [];
+  userPosts: iPost[] = [];
+  favorites: iFavorite[] = [];
+  userId: number | null = null;
   showCreatePostForm = false;
+  isEditing = false;
+  editingPostId: number | null = null;
 
   newPost: Partial<iPost> = {
     id: 0,
@@ -30,7 +37,11 @@ export class ProfileComponent {
     },
   };
 
-  constructor(private postSvc: PostsService, private authSvc: AuthService) {}
+  constructor(
+    private postSvc: PostsService,
+    private authSvc: AuthService,
+    private favoriteSvc: FavoritesService
+  ) {}
 
   ngOnInit() {
     this.authSvc.user$.pipe(map((user) => user?.id)).subscribe((userId) => {
@@ -40,39 +51,129 @@ export class ProfileComponent {
           (users) => (this.users = users.filter((user) => user.id === userId))
         );
     });
+    this.loadUserPosts();
   }
 
-  toggleCreatePost() {
-    this.showCreatePostForm = !this.showCreatePostForm;
+  loadUserPosts() {
+    this.postSvc.getAllPosts().subscribe((posts) => {
+      this.userPosts = posts.filter(
+        (post) => post.user.id === this.users[0]?.id
+      );
+    });
   }
 
-  createPost() {
+  toggleCreatePost(post?: iPost) {
+    if (post) {
+      // Se viene passato un post, stiamo modificando
+      this.isEditing = true;
+      this.editingPostId = post.id;
+      this.newPost = { ...post };
+    } else {
+      // Se non viene passato un post, stiamo creando
+      this.isEditing = false;
+      this.editingPostId = null;
+      this.resetForm();
+    }
+    this.showCreatePostForm = true;
+  }
+
+  // funzione svuota form
+  resetForm() {
+    this.newPost = {
+      id: 0,
+      title: '',
+      imageUrl: '',
+      caption: '',
+      date: new Date().toISOString(),
+      user: {
+        email: '',
+        password: '',
+        name: '',
+        surname: '',
+        userName: '',
+        id: 0,
+      },
+    };
+  }
+
+  //creo o aggiorno il post al submit
+  createOrUpdatePost() {
     this.authSvc.user$.subscribe((user) => {
       if (user && this.newPost.title && this.newPost.caption) {
-        // Completa i dettagli utente nel nuovo post
+        // Completa i dettagli utente nel post
         this.newPost.user = {
           email: user.email,
-          password: user.password, // Evita di includere la password se non necessaria
+          password: user.password,
           name: user.name,
           surname: user.surname,
           userName: user.userName,
           id: user.id,
         };
 
-        const postToCreate = this.newPost as iPost;
-
-        // Salva il post usando il PostsService
-        this.postSvc.createPost(postToCreate).subscribe(
-          (post) => {
-            console.log('Post creato con successo:', post);
-            this.showCreatePostForm = false; // Nascondi il form
-            this.newPost = {}; // Resetta i campi del form
-          },
-          (error) => {
-            console.error('Errore nella creazione del post:', error);
-          }
-        );
+        if (this.isEditing && this.editingPostId) {
+          // Aggiorna post esistente
+          const postToUpdate = this.newPost as iPost;
+          this.postSvc.updatePost(postToUpdate).subscribe(
+            (updatedPost) => {
+              console.log('Post aggiornato con successo:', updatedPost);
+              this.loadUserPosts(); // Ricarica i post
+              this.showCreatePostForm = false;
+              this.resetForm();
+            },
+            (error) => {
+              console.error("Errore nell'aggiornamento del post:", error);
+            }
+          );
+        } else {
+          // Crea nuovo post
+          const postToCreate = this.newPost as iPost;
+          this.postSvc.createPost(postToCreate).subscribe(
+            (post) => {
+              console.log('Post creato con successo:', post);
+              this.loadUserPosts(); // Ricarica i post
+              this.showCreatePostForm = false;
+              this.resetForm();
+            },
+            (error) => {
+              console.error('Errore nella creazione del post:', error);
+            }
+          );
+        }
       }
     });
+  }
+
+  deletePost(id: number) {
+    if (confirm('Sei sicuro di voler eliminare questo post?')) {
+      this.postSvc.deletePost(id).subscribe(
+        () => {
+          console.log('Post eliminato con successo');
+          this.loadUserPosts(); // Ricarica i post
+        },
+        (error) => {
+          console.error("Errore nell'eliminazione del post:", error);
+        }
+      );
+    }
+  }
+
+  //favorites
+
+  loadFavorites() {
+    if (this.userId) {
+      this.favoriteSvc.getFavorites(this.userId).subscribe((favorites) => {
+        this.favorites = favorites;
+      });
+    }
+  }
+
+  removeFromFavorites(favorite: iFavorite) {
+    if (
+      confirm(`Vuoi davvero rimuovere ${favorite.post.title} dai preferiti?`)
+    ) {
+      this.favoriteSvc
+        .removeFromFavorites(favorite)
+        .subscribe(() => this.loadFavorites());
+    }
   }
 }

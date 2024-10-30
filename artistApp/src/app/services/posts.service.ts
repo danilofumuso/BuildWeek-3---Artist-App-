@@ -11,9 +11,18 @@ export class PostsService {
 
   getAllPosts() {
     return this.http.get<iPost[]>(environment.postsUrl);
+
   }
 
   createPost(post: iPost) {
     return this.http.post<iPost>(environment.postsUrl, post);
+  }
+
+  updatePost(post: iPost) {
+    return this.http.put<iPost>(`${environment.postsUrl}/${post.id}`, post);
+  }
+
+  deletePost(postId: number) {
+    return this.http.delete(`${environment.postsUrl}/${postId}`);
   }
 }

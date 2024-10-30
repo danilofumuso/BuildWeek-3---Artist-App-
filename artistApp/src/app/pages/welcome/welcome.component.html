@@ -12,17 +12,17 @@
     >
   </div>
 </div>
-<div>
-  <ngb-carousel *ngFor="let post of posts">
-    <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img src="{{ post.imageUrl }}" alt="Random first slide" />
-      </div>
-      <div class="carousel-caption">
-        <h3>
-          {{ post.title }} <small>{{ post.user }}</small>
-        </h3>
-        <p>{{ post.caption }}</p>
+<div class="carousel-container text-center">
+  <ngb-carousel *ngIf="postGroups.length > 0">
+    <ng-template ngbSlide *ngFor="let group of postGroups">
+      <div class="d-flex justify-content-around">
+        <div class="card border-0 p-0" *ngFor="let post of posts">
+          <img
+            class="img-fluid rounded-bottom-2 small-card-img"
+            [src]="post.imageUrl"
+            [alt]="post.title"
+          />
+        </div>
       </div>
     </ng-template>
   </ngb-carousel>
