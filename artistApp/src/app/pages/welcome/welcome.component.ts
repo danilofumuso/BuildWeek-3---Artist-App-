@@ -14,20 +14,20 @@ export class WelcomeComponent implements OnInit {
   router: any;
   constructor(private postsSvc: PostsService) {}
   posts!: iPost[];
-  postGroups: iPost[] = [];
+  postGroups: iPost[][] = [];
+
   ngOnInit() {
     this.postsSvc.getAllPosts().subscribe((posts) => {
       this.posts = posts;
       this.groupPosts(); // Raggruppa i post una volta caricati
     });
   }
-  navigateToRegister() {
-    this.router.navigate(['/auth/register']);
-  }
+ 
 
   groupPosts() {
+    this.postGroups = [];
     for (let i = 0; i < this.posts.length; i += 5) {
-      this.postGroups = this.posts.slice(i, i + 5);
+      this.postGroups.push(this.posts.slice(i, i + 5));
     }
   }
 }

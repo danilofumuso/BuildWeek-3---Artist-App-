@@ -12,16 +12,17 @@
     >
   </div>
 </div>
-<div class="carousel-container text-center">
+<div class="carousel-container text-center m-2">
   <ngb-carousel *ngIf="postGroups.length > 0">
     <ng-template ngbSlide *ngFor="let group of postGroups">
       <div class="d-flex justify-content-around">
-        <div class="card border-0 p-0" *ngFor="let post of posts">
-          <img
-            class="img-fluid rounded-bottom-2 small-card-img"
-            [src]="post.imageUrl"
-            [alt]="post.title"
-          />
+        <div class="card border-0 p-0" *ngFor="let post of group">
+          <a routerLink="/auth/login"
+            ><img
+              class="small-card-img"
+              [src]="post.imageUrl"
+              [alt]="post.title"
+          /></a>
         </div>
       </div>
     </ng-template>
