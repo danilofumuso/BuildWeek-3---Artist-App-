@@ -20,6 +20,8 @@ export class CommentComponent {
   @Output() commentUpdated = new EventEmitter<number | undefined>();
   @ViewChild('form') form!: NgForm; // Aggiungi il ViewChild per il tuo form
 
+  comments: iComment[] = [];
+
   editingCommentId?: number; // Aggiungi una variabile per tenere traccia del commento in modifica
   newComment: Partial<iComment> = {}; // Variabile per i dati del commento in modifica
 

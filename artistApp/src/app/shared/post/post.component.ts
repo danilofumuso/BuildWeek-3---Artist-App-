@@ -49,7 +49,7 @@ export class PostComponent {
 
     this.commentsSvc.getCommentsOfPost(postId).subscribe((comments) => {
       this.comments = [...comments];
-      this.callBlocking = !this.callBlocking;
+      // this.callBlocking = !this.callBlocking;
     });
   }
 
