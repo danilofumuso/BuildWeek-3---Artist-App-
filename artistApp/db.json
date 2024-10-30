@@ -199,24 +199,6 @@
     {
       "userId": 2,
       "post": {
-        "id": 1,
-        "title": "My first post",
-        "user": {
-          "email": "riccardo@email.it",
-          "password": "$2a$10$nJ/j5B.xp8IIfVd6xVuJIe3ef3KcpKFJBEbBrFr7kH2gpNkRuBIPS",
-          "name": "Riccardo",
-          "surname": "Santilli",
-          "userName": "Santillis",
-          "id": 2
-        },
-        "imageUrl": "https://as2.ftcdn.net/v2/jpg/02/90/72/99/1000_F_290729930_ggkjq8SuasvqDf6qWRUNGpjBps23tblQ.jpg",
-        "caption": "This is my first post"
-      },
-      "id": 1
-    },
-    {
-      "userId": 2,
-      "post": {
         "id": 6,
         "title": "spider man",
         "imageUrl": "https://i.redd.it/jbl4xiihwjta1.jpg",
@@ -303,6 +285,24 @@
         "caption": "This is my first post"
       },
       "id": 7
+    },
+    {
+      "userId": 2,
+      "post": {
+        "id": 1,
+        "title": "My first post",
+        "user": {
+          "email": "riccardo@email.it",
+          "password": "$2a$10$nJ/j5B.xp8IIfVd6xVuJIe3ef3KcpKFJBEbBrFr7kH2gpNkRuBIPS",
+          "name": "Riccardo",
+          "surname": "Santilli",
+          "userName": "giugiu",
+          "id": 2
+        },
+        "imageUrl": "https://as2.ftcdn.net/v2/jpg/02/90/72/99/1000_F_290729930_ggkjq8SuasvqDf6qWRUNGpjBps23tblQ.jpg",
+        "caption": "This is my first post"
+      },
+      "id": 8
     }
   ]
 }
