@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { iPost } from '../../interfaces/i-post';
 import { iComment } from '../../interfaces/i-comment';
 import { CommentsService } from '../../services/comments.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -15,7 +16,7 @@ export class PostComponent {
   callBlocking: boolean = false;
   isCollapsed: boolean = true;
 
-  constructor(private commentsSvc: CommentsService) {}
+  constructor(private commentsSvc: CommentsService, private router: Router) {}
 
   getComments(postId: number) {
     if (this.callBlocking) {
@@ -30,5 +31,9 @@ export class PostComponent {
 
   showComments() {
     this.isVisible = !this.isVisible;
+  }
+  navigateToArtist(userId: number) {
+    this.router.navigate(['/artist', userId]);
+    console.log(userId);
   }
 }
