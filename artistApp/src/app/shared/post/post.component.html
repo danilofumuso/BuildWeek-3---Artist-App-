@@ -18,7 +18,10 @@
 
   <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
     <div class="card-body p-0 mt-2 ms-2">
-      <p>{{ post.user.userName }} &#8226; {{ post.caption }}</p>
+      <button (click)="navigateToArtist(post.user.id)">
+        {{ post.user.userName }}
+      </button>
+      <p>&#8226; {{ post.caption }}</p>
       <p>{{ post.date | date }}</p>
       <div class="d-flex py-2 justify-content-start">
         <a

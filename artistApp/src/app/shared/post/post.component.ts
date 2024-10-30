@@ -5,6 +5,7 @@ import { CommentsService } from '../../services/comments.service';
 import { FavoritesService } from '../../services/favorites.service';
 import { AuthService } from '../../auth/auth.service';
 import { iFavorite } from '../../interfaces/i-favorite';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -23,6 +24,7 @@ export class PostComponent {
   constructor(
     private authSvc: AuthService,
     private commentsSvc: CommentsService,
+    private router: Router,
     private favoriteSvc: FavoritesService
   ) {}
 
@@ -111,5 +113,9 @@ export class PostComponent {
     return this.favorites.some(
       (fav) => fav.post.id === post.id && fav.userId === this.userId
     );
+  }
+  navigateToArtist(userId: number) {
+    this.router.navigate(['/artist', userId]);
+    console.log(userId);
   }
 }
