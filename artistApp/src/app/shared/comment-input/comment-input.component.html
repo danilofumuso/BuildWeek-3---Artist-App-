@@ -1,0 +1,9 @@
+<form class="my-2 me-2" (ngSubmit)="submit()" #form="ngForm">
+  <input
+    placeholder="Commenta!"
+    type="text"
+    class="form-control border-0 mx-1"
+    name="comment"
+    [(ngModel)]="newComment.comment"
+  />
+</form>

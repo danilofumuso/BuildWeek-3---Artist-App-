@@ -16,7 +16,7 @@ export class CommentsService {
     );
   }
 
-  createComment(comment: iComment): Observable<iComment> {
+  createComment(comment: Partial<iComment>): Observable<iComment> {
     return this.http.post<iComment>(`${environment.commentsUrl}`, comment);
   }
 

@@ -177,22 +177,25 @@
   ],
   "comments": [
     {
-      "id": 1,
-      "comment": "This is my first comment",
-      "postId": 1,
-      "userName": "giugiu"
-    },
-    {
-      "id": 2,
-      "comment": "Fuck *** lurid ass",
-      "postId": 3,
-      "userName": "giugiu"
-    },
-    {
-      "id": 3,
-      "comment": "No way!!!!!!! ahahahahaahahahahaahahhahaah ahahahahahahahahahahahahahahah",
+      "comment": "Sono il più bello di tutti!",
+      "date": "2024-10-30T12:15:20.092Z",
+      "userName": "rik",
       "postId": 2,
-      "userName": "giugiu"
+      "id": 1
+    },
+    {
+      "comment": "Questo obiettivo è fantastico!",
+      "date": "2024-10-30T12:43:21.816Z",
+      "userName": "rik",
+      "postId": 3,
+      "id": 2
+    },
+    {
+      "comment": "AHAHAHAAHAH!",
+      "date": "2024-10-30T13:14:40.318Z",
+      "userName": "rik",
+      "postId": 6,
+      "id": 3
     }
   ],
   "favorites": [

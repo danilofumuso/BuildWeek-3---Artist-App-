@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class PostComponent {
   @Input() post!: iPost;
-  comments: iComment[] = [];
+  comments: (iComment | Partial<iComment>)[] = [{}];
   favorites: iFavorite[] = [];
   isVisible: boolean = true;
   callBlocking: boolean = false;
@@ -47,15 +47,9 @@ export class PostComponent {
       return;
     }
 
-    this.commentsSvc.getCommentsOfPost(postId).subscribe({
-      next: (comments) => {
-        this.comments = comments;
-        this.callBlocking = !this.callBlocking;
-      },
-      error: (error) => {
-        console.error('Errore nel caricamento dei commenti:', error);
-        this.callBlocking = false;
-      },
+    this.commentsSvc.getCommentsOfPost(postId).subscribe((comments) => {
+      this.comments = [...comments];
+      this.callBlocking = !this.callBlocking;
     });
   }
 

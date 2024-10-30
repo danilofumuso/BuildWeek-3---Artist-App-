@@ -1,3 +1,4 @@
+import { iComment } from './i-comment';
 import { iUser } from './i-user';
 
 export interface iPost {

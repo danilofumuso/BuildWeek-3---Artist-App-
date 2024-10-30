@@ -41,6 +41,12 @@
 </div>
 
 <div #collapse="ngbCollapse" [(ngbCollapse)]="isVisible">
+  <div class="bg-white rounded-2">
+    <app-comment-input
+      [postId]="post.id"
+      (commentSubmitted)="comments.push($event)"
+    ></app-comment-input>
+  </div>
   <div class="bg-white rounded-2" *ngFor="let comment of comments">
     <app-comment [comment]="comment"></app-comment>
   </div>
