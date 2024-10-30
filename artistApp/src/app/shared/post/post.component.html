@@ -13,10 +13,11 @@
     <div class="card-body p-0 mt-2 ms-2">
       <p>{{ post.user.userName }} &#8226; {{ post.caption }}</p>
       <p>{{ post.date | date }}</p>
-      <div class="d-flex p-2 justify-content-between">
-        <a></a>
-        <a (click)="showComments()"><i class="bi bi-arrows-expand"></i></a>
-        <a><i class="bi bi-chat-left-text-fill"></i></a>
+      <div class="d-flex py-2 justify-content-start">
+        <a><i class="bi bi-balloon-heart me-2"></i></a>
+        <a (click)="showComments()"
+          ><i class="bi bi-chat-left-text-fill"></i
+        ></a>
       </div>
     </div>
   </div>
