@@ -125,46 +125,25 @@
   ],
   "comments": [
     {
-      "comment": "Sono il più bello di tutti!",
-      "date": "2024-10-30T12:15:20.092Z",
-      "userName": "rik",
+      "comment": "qui",
+      "date": "2024-10-30T15:13:13.937Z",
+      "userName": "giugiu",
       "postId": 2,
       "id": 1
     },
     {
-      "comment": "Questo obiettivo è fantastico!",
-      "date": "2024-10-30T12:43:21.816Z",
-      "userName": "rik",
+      "comment": "bla bla bla",
+      "date": "2024-10-30T15:17:22.018Z",
+      "userName": "giugiu",
       "postId": 3,
       "id": 2
     },
     {
-      "comment": "AHAHAHAAHAH!",
-      "date": "2024-10-30T13:14:40.318Z",
-      "userName": "rik",
-      "postId": 6,
+      "comment": "prova",
+      "date": "2024-10-30T15:17:24.122Z",
+      "userName": "giugiu",
+      "postId": 3,
       "id": 3
-    },
-    {
-      "comment": "dio",
-      "date": "2024-10-30T13:26:12.462Z",
-      "userName": "giugiu",
-      "postId": 3,
-      "id": 4
-    },
-    {
-      "comment": "ok",
-      "date": "2024-10-30T13:26:20.922Z",
-      "userName": "giugiu",
-      "postId": 5,
-      "id": 5
-    },
-    {
-      "comment": "ok fantastico!",
-      "date": "2024-10-30T14:34:42.770Z",
-      "userName": "giugiu",
-      "postId": 3,
-      "id": 6
     }
   ],
   "favorites": [
@@ -185,24 +164,6 @@
         }
       },
       "id": 2
-    },
-    {
-      "userId": 2,
-      "post": {
-        "id": 3,
-        "title": "prova 3",
-        "imageUrl": "https://i0.wp.com/fotografinviaggio.it/wp-content/uploads/2023/04/Immagine-copertina-per-blog-2-21.jpg?fit=1000%2C662&ssl=1",
-        "caption": "altra prova",
-        "date": "2024-10-29T11:02:06.052Z",
-        "user": {
-          "email": "rik@san.it",
-          "name": "rik",
-          "surname": "san",
-          "userName": "rik",
-          "id": 1
-        }
-      },
-      "id": 3
     }
   ]
 }
