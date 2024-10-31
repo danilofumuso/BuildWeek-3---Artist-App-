@@ -19,7 +19,10 @@
   <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
     <div class="card-body p-0 mt-2 mx-2">
       <div>
-        <span class="tastoUsername" (click)="navigateToArtist(post.user.id)">
+        <span
+          class="tastoUsername text-primary"
+          (click)="navigateToArtist(post.user.id)"
+        >
           {{ post.user.userName }}
         </span>
         <span>&#8226; {{ post.caption }}</span>

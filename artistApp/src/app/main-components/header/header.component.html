@@ -26,14 +26,14 @@
           routerLink="/auth/login"
           type="button"
           class="btn btn-outline-light me-2"
-          >Login</a
+          >Accedi</a
         >
         <a
           *ngIf="!isLoggedIn"
           routerLink="/auth/register"
           type="button"
           class="btn btn-outline-light"
-          >Sign-up</a
+          >Registrati</a
         >
         <button
           *ngIf="isLoggedIn"
@@ -46,7 +46,7 @@
         <ng-template #content let-offcanvas>
           <div class="sfondo">
             <div class="offcanvas-header text-white">
-              <h4 class="offcanvas-title">Your Friends</h4>
+              <h4 class="offcanvas-title">I Tuoi Amici</h4>
             </div>
             <div class="offcanvas-body text-white">
               <p *ngFor="let user of users">
@@ -58,7 +58,7 @@
                   class="btn btn-outline-danger"
                   (click)="offcanvas.close('Close click')"
                 >
-                  Close
+                  Chiudi
                 </button>
               </div>
             </div>
@@ -71,7 +71,7 @@
           (click)="openEnd(content)"
           (click)="clickToGetFriends()"
         >
-          Friends
+          Amici
         </button>
       </div>
     </div>

@@ -28,68 +28,15 @@
       <h4><i class="bi bi-envelope-fill me-2"></i> {{ user.email }}</h4>
     </div>
   </div>
-</div>
 
-<!-- <div class="container-fluid">
-  <div class="row">
+  <!-- sezione post dell'utente e liked -->
+
+  <div class="row my-5" *ngIf="users.length > 0">
     <div
-      class="col-3 d-none d-md-block text-bg-black border-black border-end"
-      *ngFor="let user of users"
+      class="col-12 col-sm-6 col-md-4 col-lg-3 g-4"
+      *ngFor="let post of userPosts"
     >
-      <div class="d-flex flex-column align-items-center py-4">
-        <div class="profile-pic-container mb-4">
-          <img
-            *ngIf="user.profilePic"
-            [src]="user.profilePic"
-            alt="Profile Picture"
-            class="rounded-circle border border-3 border-secondary"
-            style="width: 150px; height: 150px; object-fit: cover"
-            onerror="this.src='assets/default-avatar.png'"
-          />
-
-          <div
-            *ngIf="!user.profilePic"
-            class="rounded-circle border border-3 border-secondary bg-secondary d-flex align-items-center justify-content-center"
-            style="width: 150px; height: 150px"
-          >
-            <i class="bi bi-person-fill fs-1 text-white"></i>
-          </div>
-        </div>
-
-        <div class="user-info text-center w-100">
-          <h2 class="fs-4 fw-bold mb-3 text-primary-emphasis">
-            {{ user.userName }}
-          </h2>
-
-          <div class="mb-4">
-            <h4 class="fs-5 mb-2">{{ user.name }} {{ user.surname }}</h4>
-          </div>
-
-          <div class="mb-4" *ngIf="user.bio">
-            <p class="text-muted fs-6 px-3">{{ user.bio }}</p>
-          </div>
-
-          <div class="text-muted fs-6 word-break">
-            <i class="bi bi-envelope-fill me-2"></i>
-            {{ user.email }}
-          </div>
-        </div>
-      </div>
-    </div> -->
-<!-- sezione post dell'utente e liked -->
-<!-- <div class="col-8 mx-auto">
-      <div>
-        <h3>I miei post</h3>
-        <div class="row" *ngIf="users.length > 0">
-          <div
-            class="col-12 col-md-6 col-lg-3 mb-5 position-relative"
-            *ngFor="let post of userPosts"
-          >
-            <app-post [post]="post"></app-post>
-            <p>{{ users[0].name }}</p>
-          </div>
-        </div>
-      </div>
+      <app-post [post]="post"></app-post>
     </div>
   </div>
-</div> -->
+</div>
