@@ -830,7 +830,155 @@
       "userName": "Danilo06",
       "postId": 2,
       "id": 1
+    },
+    {
+      "comment": "ciao",
+      "date": "2024-10-31T14:40:25.570Z",
+      "userName": "Danilo06",
+      "postId": 1,
+      "id": 3
+    },
+    {
+      "comment": "altro commento",
+      "date": "2024-10-31T14:54:39.211Z",
+      "userName": "Danilo06",
+      "postId": 1,
+      "id": 4
+    },
+    {
+      "comment": "ciao",
+      "date": "2024-10-31T15:27:49.740Z",
+      "userName": "Matricola 7829/Bis",
+      "postId": 7,
+      "id": 5
     }
   ],
-  "favorites": []
+  "favorites": [
+    {
+      "userId": 1,
+      "post": {
+        "id": 18,
+        "title": "Maestro",
+        "imageUrl": "https://pitturiamo.com/it/immagine/quadro-moderno/fantozzi-222828.jpg",
+        "caption": "Di vita",
+        "date": "2024-10-31T09:08:20.660Z",
+        "user": {
+          "email": "riccardo@email.it",
+          "name": "Riccardo",
+          "surname": "Santilli",
+          "userName": "Santone",
+          "id": 3
+        }
+      },
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "post": {
+        "id": 9,
+        "title": "Mia",
+        "imageUrl": "https://i.pinimg.com/originals/ca/04/89/ca04898e45dbcae4ca436c30db9c7516.jpg",
+        "caption": "Mia Wallace by Uma Thurman -Pulp Fiction-",
+        "date": "2024-10-31T08:54:12.618Z",
+        "user": {
+          "email": "riccardo@email.it",
+          "name": "Riccardo",
+          "surname": "Santilli",
+          "userName": "Santone",
+          "id": 3
+        }
+      },
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "post": {
+        "id": 22,
+        "title": "Lo stregatto...",
+        "imageUrl": "https://ilblogdigcomegatto.it/wp-content/uploads/2020/03/stregatto-cheshire-cat.jpg",
+        "caption": "...quello vero",
+        "date": "2024-10-31T09:13:02.455Z",
+        "user": {
+          "email": "riccardo@email.it",
+          "name": "Riccardo",
+          "surname": "Santilli",
+          "userName": "Santone",
+          "id": 3
+        }
+      },
+      "id": 3
+    },
+    {
+      "userId": 3,
+      "post": {
+        "id": 38,
+        "title": "Berserker 🔥🔥🔥",
+        "imageUrl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/18cef78d-8d34-4cfb-b9c7-662588f56c7a/de5p4qp-e0a4b0c8-e797-4bbf-8b4a-4d5523871a2a.jpg/v1/fill/w_1280,h_1768,q_75,strp/guts___berserker_armor_by_stendhalfr_de5p4qp-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTc2OCIsInBhdGgiOiJcL2ZcLzE4Y2VmNzhkLThkMzQtNGNmYi1iOWM3LTY2MjU4OGY1NmM3YVwvZGU1cDRxcC1lMGE0YjBjOC1lNzk3LTRiYmYtOGI0YS00ZDU1MjM4NzFhMmEuanBnIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.MsRnw-FYOYxWdtgJBJQktAgxvPV3hWjwMsBMY7-1Q5A",
+        "caption": "Berserk armor art :)",
+        "date": "2024-10-31T08:52:52.774Z",
+        "user": {
+          "email": "giulia@email.it",
+          "name": "Giulia",
+          "surname": "Maino",
+          "userName": "GiuGiu",
+          "id": 2
+        }
+      },
+      "id": 4
+    },
+    {
+      "userId": 3,
+      "post": {
+        "id": 37,
+        "title": "The heart's a heavy burden <3",
+        "imageUrl": "https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/16-howls-moving-castle-cynthia-williams.jpg",
+        "caption": "Howl's moving castle art :)",
+        "date": "2024-10-31T08:46:50.390Z",
+        "user": {
+          "email": "giulia@email.it",
+          "name": "Giulia",
+          "surname": "Maino",
+          "userName": "GiuGiu",
+          "id": 2
+        }
+      },
+      "id": 5
+    },
+    {
+      "userId": 3,
+      "post": {
+        "id": 51,
+        "title": "Disegno",
+        "imageUrl": "https://www.cosplayhub.com/wp-content/uploads/2016/09/Harely-Quinn-Make-Up-cover-e1474108656176.jpg",
+        "caption": "Somiglia molto alla mia amica Katia!!",
+        "date": "2024-10-31T09:10:17.408Z",
+        "user": {
+          "email": "alessandra@email.it",
+          "name": "Alessandra",
+          "surname": "Russo",
+          "userName": "Ale",
+          "id": 4
+        }
+      },
+      "id": 6
+    },
+    {
+      "userId": 3,
+      "post": {
+        "id": 42,
+        "title": "Jojooooo",
+        "imageUrl": "https://rollingstoneindia.com/wp-content/uploads/2023/02/The-JoJos-so-far.jpeg",
+        "caption": "✨✨✨",
+        "date": "2024-10-31T09:11:15.862Z",
+        "user": {
+          "email": "giulia@email.it",
+          "name": "Giulia",
+          "surname": "Maino",
+          "userName": "GiuGiu",
+          "id": 2
+        }
+      },
+      "id": 7
+    }
+  ]
 }

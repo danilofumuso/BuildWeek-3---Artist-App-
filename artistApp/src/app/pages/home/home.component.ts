@@ -28,6 +28,15 @@ export class HomeComponent {
   ngOnInit() {
     this.postsSvc.getAllPosts().subscribe((posts) => {
       this.posts = posts;
+      const shuffle = (array: iPost[]) => {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      };
+
+      this.posts = shuffle(this.posts);
     });
 
     this.authSvc.user$ //funzione per user loggato

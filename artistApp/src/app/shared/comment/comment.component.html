@@ -1,51 +1,41 @@
 <div class="ms-2 my-1 d-flex flex-column">
-  <div class="d-flex align-items-baseline">
-    <h6 class="me-2 fw-semibold">{{ comment.userName }} -</h6>
-
-    <div class="d-flex align-items-end" *ngIf="editingCommentId !== comment.id">
-      <div>{{ comment.comment }}</div>
-      <div>
-        <button
-          (click)="updateThisComment(comment)"
-          class="btn btn-outline-primary btn-sm border-0"
-        >
-          <i class="bi bi-pencil"></i>
-        </button>
-        <button
-          (click)="deleteComment(comment.id)"
-          class="btn btn-outline-danger btn-sm border-0"
-        >
-          <i class="bi bi-trash"></i>
-        </button>
-      </div>
+  <div class="d-flex align-items-baseline justify-content-between">
+    <div *ngIf="editingCommentId !== comment.id">
+      <h6 class="me-2">
+        <span class="fw-semibold">{{ comment.userName }}</span> -
+        <span class="fw-normal">{{ comment.comment }}</span>
+      </h6>
+    </div>
+    <div *ngIf="editingCommentId !== comment.id">
+      <span (click)="updateThisComment(comment)">
+        <i class="bi bi-pencil text-primary icon"></i>
+      </span>
+      <span (click)="deleteComment(comment.id)">
+        <i class="bi bi-trash text-danger mx-1 icon"></i>
+      </span>
     </div>
 
     <form
       *ngIf="editingCommentId === comment.id"
       (ngSubmit)="updateComment()"
       #form="ngForm"
-      class="my-2 me-2"
+      class="my-2"
     >
       <input
         placeholder="Modifica il commento"
         type="text"
-        class="form-control border-0 mx-1"
+        class="form-control border-primary"
         name="comment"
         [(ngModel)]="newComment.comment"
       />
-      <button
-        (click)="editingCommentId = 0"
-        type="submit"
-        class="btn btn-outline-success btn-sm"
-      >
-        <i class="bi bi-check"></i>
-      </button>
-      <button
-        (click)="editingCommentId = 0"
-        class="btn btn-outline-secondary btn-sm"
-      >
-        <i class="bi bi-x-square-fill"></i>
-      </button>
+      <div class="d-flex justify-content-center">
+        <span (click)="editingCommentId = 0" type="submit">
+          <i class="bi bi-check text-success fs-4"></i>
+        </span>
+        <span (click)="editingCommentId = 0">
+          <i class="bi bi-x text-danger fs-4"></i>
+        </span>
+      </div>
     </form>
   </div>
 </div>
