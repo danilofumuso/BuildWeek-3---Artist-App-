@@ -1,8 +1,8 @@
 <h1 *ngFor="let user of users">Welcome {{ user.userName }}</h1>
 
 <div class="container">
-  <div class="row mb-5">
-    <div class="col-4" *ngFor="let post of posts">
+  <div class="row pb-5">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let post of posts">
       <app-post [post]="post">
         <!-- <button (click)="like()">Like</button> -->
       </app-post>

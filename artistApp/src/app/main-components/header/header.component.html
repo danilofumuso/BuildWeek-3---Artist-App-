@@ -1,11 +1,9 @@
-<header
-  class="text-bg-dark bg-black sticky-top border-bottom border-white py-2"
->
+<header class="sticky-top border-bottom border-white">
   <div class="container-fluid">
     <div
       class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
     >
-      <img src="" alt="logo" />
+      <img src="logo.png" alt="logo" />
 
       <ul
         class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
@@ -46,19 +44,23 @@
         </button>
 
         <ng-template #content let-offcanvas>
-          <div class="offcanvas-header text-white">
-            <h4 class="offcanvas-title">Your Friends</h4>
-          </div>
-          <div class="offcanvas-body text-white">
-            <p *ngFor="let user of users">{{ user.name }} - {{ user.email }}</p>
-            <div class="text-end">
-              <button
-                type="button"
-                class="btn btn-outline-danger rounded-5"
-                (click)="offcanvas.close('Close click')"
-              >
-                Close
-              </button>
+          <div class="sfondo">
+            <div class="offcanvas-header text-white">
+              <h4 class="offcanvas-title">Your Friends</h4>
+            </div>
+            <div class="offcanvas-body text-white">
+              <p *ngFor="let user of users">
+                {{ user.name }} - {{ user.email }}
+              </p>
+              <div class="text-end">
+                <button
+                  type="button"
+                  class="btn btn-outline-danger rounded-5"
+                  (click)="offcanvas.close('Close click')"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </ng-template>
