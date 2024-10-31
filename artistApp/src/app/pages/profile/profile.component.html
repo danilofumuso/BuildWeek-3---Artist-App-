@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid py-5">
   <div class="row">
     <div
       class="col-3 d-none d-md-block text-bg-black border-black border-end"
@@ -25,7 +25,7 @@
         </div>
 
         <div class="user-info text-center w-100">
-          <h2 class="fs-4 fw-bold mb-3 text-primary-emphasis">
+          <h2 class="fs-4 fw-bold text-primary mb-3">
             {{ user.userName }}
           </h2>
 
@@ -34,10 +34,10 @@
           </div>
 
           <div class="mb-4" *ngIf="user.bio">
-            <p class="text-muted fs-6 px-3">{{ user.bio }}</p>
+            <p class="fs-6 px-3">{{ user.bio }}</p>
           </div>
 
-          <div class="text-muted fs-6 word-break">
+          <div class="fs-6 word-break">
             <i class="bi bi-envelope-fill me-2"></i>
             {{ user.email }}
           </div>
@@ -59,6 +59,7 @@
               [(ngModel)]="newPost.title"
               name="title"
               required
+              maxlength="18"
             />
           </div>
           <div class="mb-3">
@@ -99,7 +100,7 @@
         <h3>I miei post</h3>
         <div class="row">
           <div
-            class="col-12 col-md-6 col-lg-3 mb-5 position-relative"
+            class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 g-4 position-relative"
             *ngFor="let post of userPosts"
           >
             <app-post [post]="post"></app-post>
@@ -122,10 +123,10 @@
       </div>
 
       <div>
-        <h3>Preferiti</h3>
+        <h3 *ngIf="favorites.length > 0" class="mt-5">Preferiti</h3>
         <div class="row">
           <div
-            class="col-12 col-md-6 col-lg-3 mb-5"
+            class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 g-4"
             *ngFor="let post of favorites || []"
           >
             <app-post [post]="post"></app-post>

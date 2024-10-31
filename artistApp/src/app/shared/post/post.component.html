@@ -1,11 +1,11 @@
-<div class="card border-0 mb-1 p-0" *ngIf="post">
+<div class="card border-0 p-0" *ngIf="post">
   <!-- Contenitore con aspect ratio fissa -->
   <div class="position-relative">
     <h6 class="card-title ms-2 mt-1">
       {{ post.title }}
     </h6>
     <!-- Wrapper per mantenere aspect ratio 4:3 -->
-    <div class="position-relative" style="padding-bottom: 75%">
+    <div class="position-relative card-height">
       <img
         (click)="getComments(post.id)"
         class="position-absolute top-0 start-0 w-100 h-100 rounded-bottom-2 object-fit-cover"
@@ -17,11 +17,13 @@
   </div>
 
   <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
-    <div class="card-body p-0 mt-2 ms-2">
-      <button (click)="navigateToArtist(post.user.id)">
-        {{ post.user.userName }}
-      </button>
-      <p>&#8226; {{ post.caption }}</p>
+    <div class="card-body p-0 mt-2 mx-2">
+      <div>
+        <span class="tastoUsername" (click)="navigateToArtist(post.user.id)">
+          {{ post.user.userName }}
+        </span>
+        <span>&#8226; {{ post.caption }}</span>
+      </div>
       <p>{{ post.date | date }}</p>
       <div class="d-flex py-2 justify-content-start">
         <a

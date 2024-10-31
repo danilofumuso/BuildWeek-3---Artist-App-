@@ -1,8 +1,19 @@
 .card {
   img {
     cursor: pointer;
+    object-position: center;
   }
   .object-fit-cover {
     object-fit: center;
+  }
+
+  .card-height {
+    padding-bottom: 100%;
+  }
+
+  .tastoUsername {
+    cursor: pointer;
+    color: rgb(14, 5, 79);
+    font-weight: 600;
   }
 }
