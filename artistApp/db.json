@@ -6,7 +6,7 @@
       "name": "Danilo",
       "surname": "Fumuso",
       "userName": "Danilo06",
-      "profilePic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6tWkfCJfejkeaq78A0p6L5CZWFFVwxyz0DA&s",
+      "profilePic": "https://orgoglionerd.it/wp-content/uploads/2021/09/rowan-atkinson-mr-bean-min.jpg",
       "bio": "Mi piace Epicode, non mi piaci tu!",
       "id": 1
     },
@@ -51,7 +51,78 @@
       "id": 5
     }
   ],
-  "posts": [],
+  "posts": [
+    {
+      "id": 1,
+      "title": "Morning painting ",
+      "imageUrl": "https://www.artesplorando.it/wp-content/uploads/2013/09/Respurchino.jpg",
+      "caption": "Stamattina mi sentivo ispirato!",
+      "date": "2024-10-31T08:47:54.792Z",
+      "user": {
+        "email": "danilo@email.it",
+        "name": "Danilo",
+        "surname": "Fumuso",
+        "userName": "Danilo06",
+        "id": 1
+      }
+    },
+    {
+      "id": 2,
+      "title": "Game changer!",
+      "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhFckyb7-R0sB7ZfwKa4jRVxUlqhUx2WxQQeehhC3zD__Rwled-dZMo3U-xIHqSm639NrJE3stWG_2PrcRJRaQtlC1dGjQ6MPfqoIUnR_hDGm6fxM9Jhxqk9CtU-v5QnTmNYvhWuDZu8qis/s1600/Pennelli.jpg",
+      "caption": "Queste penne per disegnare sono fantastiche! #laBiroDelCinese",
+      "date": "2024-10-31T08:52:31.879Z",
+      "user": {
+        "email": "danilo@email.it",
+        "name": "Danilo",
+        "surname": "Fumuso",
+        "userName": "Danilo06",
+        "id": 1
+      }
+    },
+    {
+      "id": 3,
+      "title": "Sunset in Darwin!",
+      "imageUrl": "https://live.staticflickr.com/65535/33833878658_d1827c12ba_b.jpg",
+      "caption": "Anche se stavamo per essere mangiati dai coccodrilli, n'è valsa la pena! :D",
+      "date": "2024-10-31T08:57:42.597Z",
+      "user": {
+        "email": "danilo@email.it",
+        "name": "Danilo",
+        "surname": "Fumuso",
+        "userName": "Danilo06",
+        "id": 1
+      }
+    },
+    {
+      "id": 4,
+      "title": "Londra, scattata dal drone!",
+      "imageUrl": "https://static2-viaggi.corriereobjects.it/wp-content/uploads/2021/12/dove-fare-il-tampone-londra-regno-unito-iStock-1265900812.jpeg?v=1639758106",
+      "caption": "300 pound di multa :( , godetevela! ",
+      "date": "2024-10-31T09:17:46.645Z",
+      "user": {
+        "email": "danilo@email.it",
+        "name": "Danilo",
+        "surname": "Fumuso",
+        "userName": "Danilo06",
+        "id": 1
+      }
+    },
+    {
+      "id": 5,
+      "title": "Mongolfiera in Turchiaaaaa",
+      "imageUrl": "https://acenta360.fra1.cdn.digitaloceanspaces.com/651c23ab0035d.webp",
+      "caption": "Prima di salire ricordatevi di non soffrire di vertigini! #moio! ",
+      "date": "2024-10-31T09:23:34.184Z",
+      "user": {
+        "email": "danilo@email.it",
+        "name": "Danilo",
+        "surname": "Fumuso",
+        "userName": "Danilo06",
+        "id": 1
+      }
+    }
+  ],
   "comments": [],
   "favorites": []
 }
