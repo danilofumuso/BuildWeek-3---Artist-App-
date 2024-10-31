@@ -1,10 +1,10 @@
-<div class="container-fluid py-5">
+<div class="container-fluid">
   <div class="row">
     <div
-      class="col-3 d-none d-md-block text-bg-black border-black border-end"
+      class="col-3 d-none d-md-block text-bg-black profile-side"
       *ngFor="let user of users"
     >
-      <div class="d-flex flex-column align-items-center py-4">
+      <div class="d-flex flex-column align-items-center py-5">
         <div class="profile-pic-container mb-4">
           <img
             *ngIf="user.profilePic"
@@ -97,7 +97,7 @@
     <!-- sezione post dell'utente e liked -->
     <div class="col-8 mx-auto">
       <div>
-        <h3>I miei post</h3>
+        <h3 class="mt-5">I miei post</h3>
         <div class="row">
           <div
             class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 g-4 position-relative"
@@ -124,7 +124,7 @@
 
       <div>
         <h3 *ngIf="favorites.length > 0" class="mt-5">Preferiti</h3>
-        <div class="row">
+        <div class="row mb-5">
           <div
             class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 g-4"
             *ngFor="let post of favorites || []"

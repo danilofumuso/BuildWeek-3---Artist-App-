@@ -15,7 +15,7 @@
         </li>
         <li>
           <a routerLink="/profile" class="nav-link px-2 text-white"
-            ><i class="bi bi-person-add text-light"></i
+            ><i class="bi bi-person-bounding-box"></i
           ></a>
         </li>
       </ul>
@@ -25,20 +25,20 @@
           *ngIf="!isLoggedIn"
           routerLink="/auth/login"
           type="button"
-          class="btn btn-outline-success me-2 rounded-5"
+          class="btn btn-outline-light me-2"
           >Login</a
         >
         <a
           *ngIf="!isLoggedIn"
           routerLink="/auth/register"
           type="button"
-          class="btn btn-outline-warning rounded-5"
+          class="btn btn-outline-light"
           >Sign-up</a
         >
         <button
           *ngIf="isLoggedIn"
           (click)="logout()"
-          class="btn rounded-5 btn-outline-danger"
+          class="btn btn-outline-light"
         >
           Logout
         </button>
@@ -50,12 +50,12 @@
             </div>
             <div class="offcanvas-body text-white">
               <p *ngFor="let user of users">
-                {{ user.name }} - {{ user.email }}
+                {{ user.userName }} - {{ user.email }}
               </p>
               <div class="text-end">
                 <button
                   type="button"
-                  class="btn btn-outline-danger rounded-5"
+                  class="btn btn-outline-danger"
                   (click)="offcanvas.close('Close click')"
                 >
                   Close
@@ -67,7 +67,7 @@
 
         <button
           *ngIf="isLoggedIn"
-          class="btn btn-outline-primary ms-2 rounded-5"
+          class="btn btn-outline-light ms-2"
           (click)="openEnd(content)"
           (click)="clickToGetFriends()"
         >

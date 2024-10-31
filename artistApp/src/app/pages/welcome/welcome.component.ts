@@ -13,7 +13,7 @@ export class WelcomeComponent implements OnInit {
   Math: any;
   router: any;
   constructor(private postsSvc: PostsService) {}
-  posts!: iPost[];
+  posts: iPost[] = [];
   postGroups: iPost[][] = [];
 
   ngOnInit() {
@@ -22,7 +22,6 @@ export class WelcomeComponent implements OnInit {
       this.groupPosts(); // Raggruppa i post una volta caricati
     });
   }
- 
 
   groupPosts() {
     this.postGroups = [];

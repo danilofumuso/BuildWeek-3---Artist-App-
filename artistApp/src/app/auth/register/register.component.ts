@@ -35,7 +35,6 @@ export class RegisterComponent {
       const formData: Partial<iUser> = this.registerForm.value;
       this.authSvc.register(formData).subscribe((res) => {
         this.router.navigate(['/auth/login']);
-        alert('registrazione effettuata correttamente');
       });
     } else {
       this.markFormGroupTouched(this.registerForm);

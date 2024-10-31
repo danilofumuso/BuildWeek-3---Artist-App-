@@ -30,7 +30,6 @@ export class LoginComponent {
       const loginData: iLoginRequest = this.loginForm.value;
       this.authSvc.login(loginData).subscribe((data) => {
         this.router.navigate(['/home']);
-        alert('login effettuato correttamente');
       });
     } else {
       this.markFormGroupTouched(this.loginForm);
