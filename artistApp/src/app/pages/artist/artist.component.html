@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="row">
     <div
       class="col-3 d-none d-md-block text-bg-black border-black border-end"
@@ -43,9 +43,9 @@
           </div>
         </div>
       </div>
-    </div>
-    <!-- sezione post dell'utente e liked -->
-    <div class="col-8 mx-auto">
+    </div> -->
+<!-- sezione post dell'utente e liked -->
+<!-- <div class="col-8 mx-auto">
       <div>
         <h3>I miei post</h3>
         <div class="row" *ngIf="users.length > 0">
@@ -58,6 +58,38 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container" *ngFor="let user of users">
+  <div class="background">
+    <img
+      *ngIf="user.profilePic"
+      [src]="user.profilePic"
+      alt="Profile Picture"
+      class="rounded-circle border border-3 border-secondary"
+      style="width: 150px; height: 150px; object-fit: cover"
+      onerror="this.src='assets/default-avatar.png'"
+    />
+  </div>
+
+  <div class="info">
+    <div>
+      <h4>{{ user.name }} {{ user.surname }}</h4>
+    </div>
+
+    <div>
+      <h2>
+        {{ user.userName }}
+      </h2>
+    </div>
+    <!-- <div *ngIf="user.bio">
+      <p>{{ user.bio }}</p>
+    </div> -->
+
+    <div>
+      <h4><i class="bi bi-envelope-fill me-2"></i> {{ user.email }}</h4>
     </div>
   </div>
 </div>

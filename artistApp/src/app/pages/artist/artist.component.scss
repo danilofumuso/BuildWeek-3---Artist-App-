@@ -1,0 +1,26 @@
+.container {
+  margin-top: 2rem;
+}
+
+.info {
+  width: 80%;
+  margin-inline: auto;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+  background-color: hsla(0, 0%, 0%, 0.2);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  padding-block: 1.5rem;
+  color: white;
+  div:nth-child(2) {
+    padding-inline: 6rem;
+    border-inline: 2px solid white;
+  }
+}
+
+.background {
+  text-align: center;
+}
